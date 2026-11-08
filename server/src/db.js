@@ -64,6 +64,12 @@ CREATE TABLE IF NOT EXISTS settings (
 );
 `;
 
+// Columns added after the first release; created on existing databases at startup.
+const ADDED_COLUMNS = [
+  ['users', 'token_version', 'INTEGER NOT NULL DEFAULT 0'],
+  ['users', 'must_change_password', 'INTEGER NOT NULL DEFAULT 0'],
+];
+
 async function openSqlite(file) {
   const { default: Database } = await import('better-sqlite3');
   const dbFile = file ?? path.join(process.env.DATA_DIR || path.resolve(process.cwd(), 'data'), 'study-tracker.db');
@@ -72,6 +78,10 @@ async function openSqlite(file) {
   sqlite.pragma('journal_mode = WAL');
   sqlite.pragma('foreign_keys = ON');
   sqlite.exec(tables('INTEGER PRIMARY KEY AUTOINCREMENT'));
+  for (const [table, column, ddl] of ADDED_COLUMNS) {
+    const cols = sqlite.prepare(`PRAGMA table_info(${table})`).all();
+    if (!cols.some((c) => c.name === column)) sqlite.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${ddl}`);
+  }
 
   const q = {
     get: async (sql, p = []) => sqlite.prepare(sql).get(...p),
@@ -127,6 +137,9 @@ async function openPostgres(url) {
   });
 
   await pool.query(tables('SERIAL PRIMARY KEY'));
+  for (const [table, column, ddl] of ADDED_COLUMNS) {
+    await pool.query(`ALTER TABLE ${table} ADD COLUMN IF NOT EXISTS ${column} ${ddl}`);
+  }
 
   const tx = async (fn) => {
     const client = await pool.connect();

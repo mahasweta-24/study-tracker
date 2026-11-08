@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useApp } from '../store.js';
 import { Drawer, Icon, NoteBox, ProgressRing, Segmented } from '../components/ui.jsx';
 import { fmt, nextMonday, plural, streak, todayISO } from '../dates.js';
@@ -29,6 +29,26 @@ export default function Cases() {
   const [hideDone, setHideDone] = useState(() => pref('cs-hide-done', '0') === '1');
   const [view, setView] = useState(() => pref('cs-view', 'board'));
   const [dragOver, setDragOver] = useState(null);
+  const boardRef = useRef(null);
+  const colRefs = useRef({});
+
+  // Jump to a week: slide the board sideways when it scrolls horizontally, else scroll the page.
+  const jumpTo = (n, smooth = true) => {
+    const board = boardRef.current;
+    const col = colRefs.current[n];
+    if (!board || !col) return;
+    if (board.scrollWidth > board.clientWidth + 4) {
+      board.scrollTo({ left: col.offsetLeft - board.offsetLeft - 2, behavior: smooth ? 'smooth' : 'auto' });
+    } else if (smooth) {
+      col.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+  };
+  // Open the board on the current week.
+  const currentWeekN = cases.startDate ? data.currentWeek : null;
+  useEffect(() => {
+    if (currentWeekN && currentWeekN > 1) jumpTo(currentWeekN, false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cases.startDate, view]);
 
   if (!cases.startDate) {
     return (
@@ -132,9 +152,19 @@ export default function Cases() {
         <button className="btn ghost small" onClick={actions.reset}><Icon name="reset" size={16} /> Reset weeks</button>
       </div>
 
-      <div className={view === 'board' ? 'board' : 'board as-list'}>
+      <nav className="week-jump" aria-label="Jump to week">
         {visibleWeeks.map((w) => (
-          <section key={w.n}
+          <button key={w.n} type="button" onClick={() => jumpTo(w.n)}
+            className={`${w.isCurrent ? 'current' : ''} ${w.items.length && w.done === w.items.length ? 'done' : ''} ${w.isPast && w.done < w.items.length ? 'behind' : ''}`}
+            title={`Week ${w.n}: ${w.done}/${w.items.length} done`}>
+            W{w.n}
+          </button>
+        ))}
+      </nav>
+
+      <div ref={boardRef} className={view === 'board' ? 'board' : 'board as-list'}>
+        {visibleWeeks.map((w) => (
+          <section key={w.n} ref={(el) => { colRefs.current[w.n] = el; }}
             className={`col ${w.isCurrent ? 'current' : ''} ${w.isPast && w.done < w.items.length ? 'behind' : ''} ${dragOver === w.n ? 'drag-over' : ''}`}
             onDragOver={(e) => { e.preventDefault(); setDragOver(w.n); }}
             onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setDragOver(null); }}

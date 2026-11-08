@@ -16,6 +16,10 @@ export const ACTION_LABELS = {
   shift_week: 'Shifted week',
   shift_weeks: 'Shifted weeks',
   reset_weeks: 'Reset weeks',
+  grant_admin: 'Made admin',
+  revoke_admin: 'Removed admin',
+  reset_password: 'Reset password',
+  change_password: 'Changed password',
 };
 
 export const ACTION_TONE = {
@@ -31,9 +35,13 @@ export const ACTION_TONE = {
   shift_weeks: 'violet',
   reset_schedule: 'red',
   reset_weeks: 'red',
+  grant_admin: 'violet',
+  revoke_admin: 'gray',
+  reset_password: 'red',
+  change_password: 'blue',
 };
 
-export const SECTION_LABELS = { powerbi: 'Power BI', cases: 'Case studies' };
+export const SECTION_LABELS = { powerbi: 'Power BI', cases: 'Case studies', account: 'Account' };
 
 const sign = (n) => (n > 0 ? `+${n}` : `${n}`);
 const d = (iso) => {
@@ -66,6 +74,11 @@ export function describeDetails(a) {
       return `${x.daysReset} days restored`;
     case 'reset_weeks':
       return `${x.casesReset} cases restored`;
+    case 'grant_admin':
+    case 'revoke_admin':
+      return `${x.from === 'admin' ? 'Admin' : 'User'} → ${x.to === 'admin' ? 'Admin' : 'User'}`;
+    case 'reset_password':
+      return 'Temporary password issued';
     default:
       return '';
   }

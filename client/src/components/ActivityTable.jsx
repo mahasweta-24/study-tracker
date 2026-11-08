@@ -14,7 +14,7 @@ export function ActivityTable({ rows, showUser, sort, onSort }) {
 
   return (
     <div className="table-wrap">
-      <table className="table">
+      <table className="table cards-on-mobile">
         <thead>
           <tr>
             {th('created_at', 'When')}
@@ -29,18 +29,18 @@ export function ActivityTable({ rows, showUser, sort, onSort }) {
         <tbody>
           {rows.map((a) => (
             <tr key={a.id}>
-              <td className="nowrap" title={fmtDateTime(a.createdAt)}>
+              <td className="nowrap when" data-label="When" title={fmtDateTime(a.createdAt)}>
                 <div>{relTime(a.createdAt)}</div>
                 <div className="muted tiny">{fmtDateTime(a.createdAt)}</div>
               </td>
               {showUser && (
-                <td><div className="nowrap">{a.userName}</div><div className="muted tiny">{a.userEmail}</div></td>
+                <td data-label="User"><div className="nowrap">{a.userName}</div>{a.userEmail && <div className="muted tiny">{a.userEmail}</div>}</td>
               )}
-              <td><span className={`sec ${a.section}`}>{SECTION_LABELS[a.section] || a.section}</span></td>
-              <td><span className={`badge ${ACTION_TONE[a.action] || 'gray'}`}>{ACTION_LABELS[a.action] || a.action}</span></td>
-              <td className="item">{a.item}</td>
-              <td className="muted small">{describeDetails(a)}</td>
-              <td className="msg">{a.message}</td>
+              <td className="sec-cell" data-label="Section"><span className={`sec ${a.section}`}>{SECTION_LABELS[a.section] || a.section}</span></td>
+              <td className="act-cell" data-label="Action"><span className={`badge ${ACTION_TONE[a.action] || 'gray'}`}>{ACTION_LABELS[a.action] || a.action}</span></td>
+              <td className="item" data-label="Item">{a.item}</td>
+              <td className="muted small change" data-label="Change">{describeDetails(a) || '—'}</td>
+              <td className="msg" data-label="Message">{a.message}</td>
             </tr>
           ))}
           {rows.length === 0 && (

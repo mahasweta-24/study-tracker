@@ -39,11 +39,21 @@ activity log. Admins see all users' changes in a filterable table and can export
 - Email and password accounts. Passwords are hashed with bcrypt, and sessions use httpOnly JWT cookies.
 - **Every change opens a confirmation dialog** that shows exactly what will change (dates, affected days or cases, the new finish date) and **requires a message**.
 - **My activity** lists your own history with search and filters.
+- **Account page** (tap your avatar): see your details and **change your password**. You stay signed in on that device, and every other device is signed out.
 - **Admin panel:**
   - Totals for users, changes, changes today, completions and shifts.
-  - **The activity log as a table.** Sort by when, user, section or action. Filter by user, section, action and date range, or search messages. Paginated, with **Export CSV**.
-  - **Users table.** Shows each user's progress in both plans, number of changes and last activity. You can promote users to admin or demote them.
-- Light and dark themes, and the layout works on phones.
+  - **The activity log as a table.** Sort by when, user, section or action. Filter by user, section (Power BI, Case studies, Account), action and date range, or search messages. Paginated, with **Export CSV**.
+  - **Users table.** Shows each user's progress in both plans, number of changes and last activity.
+  - **Make admin / Remove admin** for any other user. Each change asks for a message and is logged. There must always be at least one admin.
+  - **Reset password** for a user who is locked out. The app creates a temporary password (for example `maple-4827-river`) and shows it to the admin once. The user is signed out everywhere and must choose a new password the next time they sign in.
+
+### Works on phones
+- Below tablet width, navigation moves to a **bottom tab bar** with labels.
+- Dialogs open as **bottom sheets** with full-width buttons.
+- The case board becomes **swipeable week columns** that open on the current week, with a row of week buttons (W1, W2…) to jump between them.
+- Admin and activity tables turn into **stacked cards**, and inputs use 16px text so iPhone doesn't zoom in.
+- **Add to Home Screen** (iPhone and Android) installs it with its own icon and opens it full screen, like an app.
+- Light and dark themes.
 
 ### Inspiration
 Ideas borrowed from popular planner and productivity tools:

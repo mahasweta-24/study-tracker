@@ -1,6 +1,7 @@
 /* Artifact-only layout adjustments: safe-area aware gutters and sticky header. */
 .topbar {
   top: env(safe-area-inset-top, 0px);
+  padding-top: 10px !important; /* the viewer already pads the page below the status bar */
   padding-left: max(24px, env(safe-area-inset-left, 0px));
   padding-right: max(24px, env(safe-area-inset-right, 0px));
 }

@@ -1,18 +1,36 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import crypto from 'node:crypto';
 import { nowISO } from './db.js';
 import { HttpError, badRequest } from './lib/errors.js';
 
 const COOKIE = 'st_token';
 const MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
-export const publicUser = (u) => (!u ? null : { id: u.id, name: u.name, email: u.email, role: u.role, createdAt: u.created_at });
+export const publicUser = (u) =>
+  !u
+    ? null
+    : { id: u.id, name: u.name, email: u.email, role: u.role, createdAt: u.created_at, mustChangePassword: !!u.must_change_password };
+
+export function validatePassword(pw) {
+  if (typeof pw !== 'string' || pw.length < 8) throw badRequest('Password must be at least 8 characters.');
+  if (pw.length > 200) throw badRequest('Password is too long.');
+  return pw;
+}
+
+// Readable temporary password, e.g. "kite-4827-maple" (no look-alike characters).
+export function temporaryPassword() {
+  const words = ['amber', 'birch', 'cedar', 'delta', 'ember', 'fable', 'grove', 'haven', 'ivory', 'jade', 'kite', 'lotus', 'maple', 'nova', 'orbit', 'pearl', 'quill', 'river', 'sage', 'tulip'];
+  const pick = () => words[crypto.randomInt(words.length)];
+  return `${pick()}-${crypto.randomInt(1000, 10000)}-${pick()}`;
+}
 
 export function createAuth(db, secret) {
   const adminEmail = (process.env.ADMIN_EMAIL || '').trim().toLowerCase();
 
   function issue(res, req, user) {
-    const token = jwt.sign({ sub: user.id }, secret, { expiresIn: '30d' });
+    // "ver" changes when the password changes, which signs out every other session.
+    const token = jwt.sign({ sub: user.id, ver: user.token_version ?? 0 }, secret, { expiresIn: '30d' });
     res.cookie(COOKIE, token, {
       httpOnly: true,
       sameSite: 'lax',
@@ -33,13 +51,16 @@ export function createAuth(db, secret) {
     const token = readToken(req);
     req.user = null;
     if (token) {
-      let sub = null;
+      let claims = null;
       try {
-        sub = jwt.verify(token, secret).sub;
+        claims = jwt.verify(token, secret);
       } catch {
-        sub = null;
+        claims = null;
       }
-      if (sub) req.user = (await db.get('SELECT * FROM users WHERE id = ?', [sub])) || null;
+      if (claims?.sub) {
+        const user = await db.get('SELECT * FROM users WHERE id = ?', [claims.sub]);
+        if (user && (claims.ver ?? 0) === (user.token_version ?? 0)) req.user = user;
+      }
     }
     next();
   }
@@ -60,7 +81,7 @@ export function createAuth(db, secret) {
     email = typeof email === 'string' ? email.trim().toLowerCase() : '';
     if (!name || name.length > 80) throw badRequest('Please enter your name.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw badRequest('Please enter a valid email.');
-    if (typeof password !== 'string' || password.length < 8) throw badRequest('Password must be at least 8 characters.');
+    validatePassword(password);
     if (await db.get('SELECT 1 AS x FROM users WHERE email = ?', [email])) throw new HttpError(409, 'An account with this email already exists.');
     const hash = bcrypt.hashSync(password, 10);
     return db.tx(async (q) => {
@@ -100,7 +121,36 @@ export function createAuth(db, secret) {
     }
   }
 
-  return { issue, authenticate, requireUser, requireAdmin, register, login, bootstrapAdmin, COOKIE };
+  async function changePassword(user, { currentPassword, newPassword }) {
+    if (typeof currentPassword !== 'string' || !bcrypt.compareSync(currentPassword, user.password_hash)) {
+      throw badRequest('Your current password is incorrect.');
+    }
+    validatePassword(newPassword);
+    if (newPassword === currentPassword) throw badRequest('Choose a password different from the current one.');
+    return db.tx(async (q) => {
+      await q.run('UPDATE users SET password_hash = ?, must_change_password = 0, token_version = token_version + 1 WHERE id = ?', [
+        bcrypt.hashSync(newPassword, 10),
+        user.id,
+      ]);
+      await q.run(
+        "INSERT INTO activity_log (user_id, section, action, item, details, message, created_at) VALUES (?, 'account', 'change_password', ?, NULL, ?, ?)",
+        [user.id, user.name, user.must_change_password ? 'Set a new password after an admin reset' : 'Changed own password', nowISO()]
+      );
+      return q.get('SELECT * FROM users WHERE id = ?', [user.id]);
+    });
+  }
+
+  // Admin: replace a user's password with a temporary one they must change at next sign-in.
+  async function resetPassword(target) {
+    const temp = temporaryPassword();
+    await db.run('UPDATE users SET password_hash = ?, must_change_password = 1, token_version = token_version + 1 WHERE id = ?', [
+      bcrypt.hashSync(temp, 10),
+      target.id,
+    ]);
+    return temp;
+  }
+
+  return { issue, authenticate, requireUser, requireAdmin, register, login, bootstrapAdmin, changePassword, resetPassword, COOKIE };
 }
 
 // Tiny in-memory rate limiter for auth endpoints (per IP).

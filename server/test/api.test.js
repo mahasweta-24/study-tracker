@@ -161,7 +161,57 @@ test('admin sees every change in the activity log, with filters and CSV', async 
 });
 
 test('cannot remove the last admin', async () => {
-  const r = await admin('PATCH', '/admin/users/1', { role: 'user' });
+  const me = (await admin('GET', '/auth/me')).body.user;
+  const r = await admin('PATCH', `/admin/users/${me.id}`, { role: 'user', message: 'stepping down' });
   assert.equal(r.status, 400);
+  assert.match(r.body.error, /at least one admin/);
+});
+
+test('admin grants and removes admin rights, with a message, and it is logged', async () => {
+  const target = (await admin('GET', '/admin/users')).body.find((u) => u.email === 'maha@example.com');
+  let r = await admin('PATCH', `/admin/users/${target.id}`, { role: 'admin' });
+  assert.equal(r.status, 400, 'message required');
+  r = await admin('PATCH', `/admin/users/${target.id}`, { role: 'admin', message: 'Helping run the group' });
+  assert.equal(r.body.role, 'admin');
+  assert.equal((await user('GET', '/admin/users')).status, 200, 'new admin can open the admin panel');
+  r = await admin('PATCH', `/admin/users/${target.id}`, { role: 'user', message: 'Back to normal' });
+  assert.equal(r.body.role, 'user');
+  assert.equal((await user('GET', '/admin/users')).status, 403);
+  r = await admin('GET', '/admin/activity?section=account');
+  assert.deepEqual(r.body.rows.map((a) => a.action).sort(), ['grant_admin', 'revoke_admin']);
+  assert.equal(r.body.rows.find((a) => a.action === 'grant_admin').message, 'Helping run the group');
+});
+
+test('signed-in user changes their password', async () => {
+  let r = await user('POST', '/auth/change-password', { currentPassword: 'wrong-one', newPassword: 'newpassword1' });
+  assert.equal(r.status, 400);
+  r = await user('POST', '/auth/change-password', { currentPassword: 'password123', newPassword: 'short' });
+  assert.equal(r.status, 400);
+  r = await user('POST', '/auth/change-password', { currentPassword: 'password123', newPassword: 'newpassword1' });
+  assert.equal(r.status, 200);
+  assert.equal((await user('GET', '/powerbi')).status, 200, 'this session stays signed in');
+  assert.equal((await client()('POST', '/auth/login', { email: 'maha@example.com', password: 'password123' })).status, 401);
+  assert.equal((await client()('POST', '/auth/login', { email: 'maha@example.com', password: 'newpassword1' })).status, 200);
+});
+
+test('admin resets a password: old sessions end, user must set a new one', async () => {
+  const target = (await admin('GET', '/admin/users')).body.find((u) => u.email === 'maha@example.com');
+  let r = await admin('POST', `/admin/users/${target.id}/reset-password`, {});
+  assert.equal(r.status, 400, 'message required');
+  r = await admin('POST', `/admin/users/${target.id}/reset-password`, { message: 'Forgot her password' });
+  assert.equal(r.status, 200);
+  const temp = r.body.tempPassword;
+  assert.match(temp, /^[a-z]+-\d{4}-[a-z]+$/);
+  assert.equal((await user('GET', '/powerbi')).status, 401, 'existing session signed out');
+
+  const fresh = client();
+  r = await fresh('POST', '/auth/login', { email: 'maha@example.com', password: temp });
+  assert.equal(r.body.user.mustChangePassword, true);
+  assert.equal((await fresh('GET', '/powerbi')).status, 403, 'blocked until a new password is set');
+  r = await fresh('POST', '/auth/change-password', { currentPassword: temp, newPassword: 'brandnewpass' });
+  assert.equal(r.body.user.mustChangePassword, false);
+  assert.equal((await fresh('GET', '/powerbi')).status, 200);
+  const log = await admin('GET', '/admin/activity?action=reset_password');
+  assert.equal(log.body.rows[0].message, 'Forgot her password');
 });
 });

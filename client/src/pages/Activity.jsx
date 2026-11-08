@@ -34,6 +34,7 @@ export default function Activity() {
             <option value="">All sections</option>
             <option value="powerbi">Power BI</option>
             <option value="cases">Case studies</option>
+            <option value="account">Account</option>
           </select>
           <select value={filters.action} onChange={set('action')}>
             <option value="">All actions</option>

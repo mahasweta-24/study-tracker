@@ -4,6 +4,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getJwtSecret } from './db.js';
+import { HttpError } from './lib/errors.js';
 import { createAuth, publicUser, rateLimit } from './auth.js';
 import { powerbi, cases } from './content.js';
 import powerbiRoutes from './routes/powerbi.js';
@@ -55,6 +56,17 @@ export async function createApp(db, { staticDir } = {}) {
     res.json({ ok: true });
   });
   api.get('/auth/me', (req, res) => res.json({ user: publicUser(req.user) }));
+  api.post('/auth/change-password', limiter, auth.requireUser, async (req, res) => {
+    const user = await auth.changePassword(req.user, req.body);
+    auth.issue(res, req, user); // this session stays signed in; other sessions are signed out
+    res.json({ user: publicUser(user) });
+  });
+
+  // After an admin reset, nothing else works until the user picks a new password.
+  api.use(['/powerbi', '/cases', '/activity', '/admin'], (req, _res, next) => {
+    if (req.user?.must_change_password) throw new HttpError(403, 'Please set a new password first.');
+    next();
+  });
 
   api.get('/content/powerbi', (_req, res) => res.json(powerbi));
   api.get('/content/cases', (_req, res) => res.json(cases));
@@ -62,7 +74,7 @@ export async function createApp(db, { staticDir } = {}) {
   api.use('/powerbi', auth.requireUser, powerbiRoutes(db));
   api.use('/cases', auth.requireUser, casesRoutes(db));
   api.use('/activity', auth.requireUser, activityRoutes(db));
-  api.use('/admin', auth.requireAdmin, adminRoutes(db));
+  api.use('/admin', auth.requireAdmin, adminRoutes(db, auth));
 
   api.use((_req, res) => res.status(404).json({ error: 'Not found' }));
   app.use('/api', api);

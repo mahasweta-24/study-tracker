@@ -10,6 +10,7 @@ import PowerBI from './pages/PowerBI.jsx';
 import Cases from './pages/Cases.jsx';
 import Activity from './pages/Activity.jsx';
 import Admin from './pages/Admin.jsx';
+import Account, { MustChangePassword } from './pages/Account.jsx';
 
 function useHashRoute() {
   const get = () => (window.location.hash.replace(/^#\/?/, '').split('?')[0] || 'home');
@@ -37,10 +38,10 @@ function useTheme() {
 }
 
 const NAV = [
-  { id: 'home', label: 'Dashboard', icon: 'home' },
-  { id: 'powerbi', label: 'Power BI', icon: 'chart' },
-  { id: 'cases', label: 'Case studies', icon: 'book' },
-  { id: 'activity', label: 'My activity', icon: 'history' },
+  { id: 'home', label: 'Dashboard', short: 'Home', icon: 'home' },
+  { id: 'powerbi', label: 'Power BI', short: 'Power BI', icon: 'chart' },
+  { id: 'cases', label: 'Case studies', short: 'Cases', icon: 'book' },
+  { id: 'activity', label: 'My activity', short: 'Activity', icon: 'history' },
 ];
 
 export default function App() {
@@ -58,15 +59,16 @@ export default function App() {
     Promise.all([api.get('/content/powerbi'), api.get('/content/cases')]).then(([p, c]) => setContent({ powerbi: p, cases: c }));
   }, []);
 
-  useEffect(() => {
-    if (!user) { setPbi(null); setCases(null); return; }
-    api.get('/powerbi').then(setPbi);
-    api.get('/cases').then(setCases);
-  }, [user]);
-
   const notify = useCallback((text, tone = 'ok') => {
     setToast({ text, tone, id: Date.now() });
   }, []);
+
+  useEffect(() => {
+    if (!user || user.mustChangePassword) { setPbi(null); setCases(null); return; }
+    api.get('/powerbi').then(setPbi).catch((e) => notify(e.message, 'error'));
+    api.get('/cases').then(setCases).catch((e) => notify(e.message, 'error'));
+  }, [user, notify]);
+
   useEffect(() => {
     if (!toast) return;
     const t = setTimeout(() => setToast(null), 3200);
@@ -83,8 +85,12 @@ export default function App() {
 
   if (user === undefined || !content) return <div className="splash"><div className="spinner" /></div>;
   if (!user) return <Login onAuthed={setUser} isDark={isDark} toggleTheme={toggleTheme} />;
+  if (user.mustChangePassword) {
+    return <MustChangePassword user={user} onDone={setUser} onSignOut={() => api.post('/auth/logout').then(() => setUser(null))} />;
+  }
 
-  const nav = user.role === 'admin' ? [...NAV, { id: 'admin', label: 'Admin', icon: 'shield' }] : NAV;
+  const nav = user.role === 'admin' ? [...NAV, { id: 'admin', label: 'Admin', short: 'Admin', icon: 'shield' }] : NAV;
+  const isActive = (id) => route === id || (id === 'home' && !nav.some((x) => x.id === route));
   const ready = pbi && cases;
   let page;
   if (!ready) page = <div className="splash small"><div className="spinner" /></div>;
@@ -92,6 +98,7 @@ export default function App() {
   else if (route === 'cases') page = <Cases />;
   else if (route === 'activity') page = <Activity />;
   else if (route === 'admin' && user.role === 'admin') page = <Admin />;
+  else if (route === 'account' && !EMBEDDED) page = <Account onUserChange={setUser} />;
   else page = <Dashboard />;
 
   async function logout() {
@@ -110,7 +117,7 @@ export default function App() {
           </a>
           <nav className="nav">
             {nav.map((n) => (
-              <a key={n.id} href={`#${n.id}`} className={route === n.id || (n.id === 'home' && !nav.some((x) => x.id === route)) ? 'active' : ''}>
+              <a key={n.id} href={`#${n.id}`} className={isActive(n.id) ? 'active' : ''}>
                 <Icon name={n.icon} size={17} /> <span>{n.label}</span>
               </a>
             ))}
@@ -121,11 +128,26 @@ export default function App() {
                 <Icon name={isDark ? 'sun' : 'moon'} />
               </button>
             )}
-            <div className="avatar" title={user.email ? `${user.name} (${user.email})` : user.name}>{(user.name || '?').slice(0, 1).toUpperCase()}</div>
+            {EMBEDDED ? (
+              <div className="avatar" title={user.name}>{(user.name || '?').slice(0, 1).toUpperCase()}</div>
+            ) : (
+              <a className={`avatar ${route === 'account' ? 'active' : ''}`} href="#account" title={`Account: ${user.name} (${user.email})`} aria-label="Your account">
+                {(user.name || '?').slice(0, 1).toUpperCase()}
+              </a>
+            )}
             {!EMBEDDED && <button className="icon-btn" onClick={logout} aria-label="Sign out" title="Sign out"><Icon name="logout" /></button>}
           </div>
         </header>
         <main className="main">{page}</main>
+        {/* phone navigation: a labelled tab bar at the bottom of the screen */}
+        <nav className="tabbar" aria-label="Sections">
+          {nav.map((n) => (
+            <a key={n.id} href={`#${n.id}`} className={isActive(n.id) ? 'active' : ''} aria-current={isActive(n.id) ? 'page' : undefined}>
+              <Icon name={n.icon} size={21} />
+              <span>{n.short}</span>
+            </a>
+          ))}
+        </nav>
       </div>
       {dialog}
       {toast && <div key={toast.id} className={`toast ${toast.tone}`} role="status">{toast.text}</div>}

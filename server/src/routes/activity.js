@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { badRequest, notFound, requireInt } from '../lib/errors.js';
+import { badRequest, notFound, requireInt, requireMessage } from '../lib/errors.js';
+import { logActivity } from '../db.js';
 import { publicUser } from '../auth.js';
 
 const SORTABLE = new Set(['created_at', 'section', 'action', 'user']);
@@ -85,7 +86,7 @@ export function activityRoutes(db) {
   return r;
 }
 
-export function adminRoutes(db) {
+export function adminRoutes(db, auth) {
   const r = Router();
 
   r.get('/activity', async (req, res) => res.json(await paged(db, req)));
@@ -143,18 +144,54 @@ export function adminRoutes(db) {
     );
   });
 
-  r.patch('/users/:id', async (req, res) => {
-    const id = requireInt(req.params.id, 'id', 1, Number.MAX_SAFE_INTEGER);
-    const role = req.body.role;
-    if (role !== 'admin' && role !== 'user') throw badRequest('role must be "admin" or "user".');
+  const findUser = async (idParam) => {
+    const id = requireInt(idParam, 'id', 1, Number.MAX_SAFE_INTEGER);
     const user = await db.get('SELECT * FROM users WHERE id = ?', [id]);
     if (!user) throw notFound('User not found.');
-    if (role === 'user' && user.role === 'admin') {
-      const admins = (await db.get("SELECT CAST(COUNT(*) AS INTEGER) AS n FROM users WHERE role = 'admin'")).n;
-      if (admins <= 1) throw badRequest('There must be at least one admin.');
-    }
-    await db.run('UPDATE users SET role = ? WHERE id = ?', [role, id]);
-    res.json(publicUser(await db.get('SELECT * FROM users WHERE id = ?', [id])));
+    return user;
+  };
+
+  // Grant or remove admin rights. Requires a message, and is recorded in the activity log.
+  r.patch('/users/:id', async (req, res) => {
+    const user = await findUser(req.params.id);
+    const role = req.body.role;
+    if (role !== 'admin' && role !== 'user') throw badRequest('role must be "admin" or "user".');
+    const message = requireMessage(req.body);
+    if (user.role === role) throw badRequest(role === 'admin' ? `${user.name} is already an admin.` : `${user.name} is not an admin.`);
+    const updated = await db.tx(async (q) => {
+      if (role === 'user') {
+        const admins = (await q.get("SELECT CAST(COUNT(*) AS INTEGER) AS n FROM users WHERE role = 'admin'")).n;
+        if (admins <= 1) throw badRequest('There must be at least one admin.');
+      }
+      await q.run('UPDATE users SET role = ? WHERE id = ?', [role, user.id]);
+      await logActivity(q, {
+        userId: req.user.id,
+        section: 'account',
+        action: role === 'admin' ? 'grant_admin' : 'revoke_admin',
+        item: `${user.name} (${user.email})`,
+        details: { targetUserId: user.id, from: user.role, to: role },
+        message,
+      });
+      return q.get('SELECT * FROM users WHERE id = ?', [user.id]);
+    });
+    res.json(publicUser(updated));
+  });
+
+  // Reset someone's password to a one-time temporary password (shown to the admin once).
+  r.post('/users/:id/reset-password', async (req, res) => {
+    const user = await findUser(req.params.id);
+    const message = requireMessage(req.body);
+    if (user.id === req.user.id) throw badRequest('Use the Account page to change your own password.');
+    const tempPassword = await auth.resetPassword(user);
+    await logActivity(db, {
+      userId: req.user.id,
+      section: 'account',
+      action: 'reset_password',
+      item: `${user.name} (${user.email})`,
+      details: { targetUserId: user.id },
+      message,
+    });
+    res.json({ user: publicUser(await db.get('SELECT * FROM users WHERE id = ?', [user.id])), tempPassword });
   });
 
   return r;

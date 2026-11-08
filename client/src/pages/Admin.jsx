@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { api, qs } from '../api.js';
 import { useApp } from '../store.js';
 import { ActivityTable, ACTION_OPTIONS, Pager } from '../components/ActivityTable.jsx';
-import { Icon, Segmented } from '../components/ui.jsx';
+import { ActionDialog, Icon, Modal, Segmented } from '../components/ui.jsx';
 import { fmt, fmtDateTime, relTime } from '../dates.js';
 import { EMBEDDED } from '../env.js';
 
 const EMPTY = { userId: '', section: '', action: '', q: '', from: '', to: '' };
 
 export default function Admin() {
-  const { user, notify, pbi, cases } = useApp();
+  const { user, notify, pbi, cases, openDialog, closeDialog } = useApp();
   const [tab, setTab] = useState('activity');
   const [stats, setStats] = useState(null);
   const [users, setUsers] = useState([]);
@@ -49,15 +49,60 @@ export default function Admin() {
   const onSort = (key) => setSort((s) => ({ key, dir: s.key === key && s.dir === 'desc' ? 'asc' : 'desc' }));
   const active = Object.values(filters).some(Boolean);
 
-  async function setRole(u, role) {
-    try {
-      await api.patch(`/admin/users/${u.id}`, { role });
-      notify(`${u.name} is now ${role === 'admin' ? 'an admin' : 'a user'}`);
-      loadUsers();
-    } catch (e) {
-      notify(e.message, 'error');
-    }
-  }
+  const refresh = () => {
+    loadUsers();
+    api.get('/admin/stats').then(setStats);
+    setPage((p) => p); // re-run the activity query
+    setFilters((f) => ({ ...f }));
+  };
+
+  const changeRole = (u) => {
+    const makeAdmin = u.role !== 'admin';
+    openDialog(
+      <ActionDialog
+        title={makeAdmin ? `Make ${u.name} an admin?` : `Remove admin rights from ${u.name}?`}
+        confirmLabel={makeAdmin ? 'Make admin' : 'Remove admin'}
+        tone={makeAdmin ? 'violet' : 'danger'}
+        messagePlaceholder={makeAdmin ? 'e.g. Helping review the group’s progress.' : 'e.g. No longer running the group.'}
+        preview={() => (
+          <p>
+            {makeAdmin
+              ? 'Admins can open this panel, see everyone’s activity, export it, manage roles and reset passwords.'
+              : 'They keep their own progress but lose access to the admin panel.'}
+          </p>
+        )}
+        onConfirm={async (message) => {
+          await api.patch(`/admin/users/${u.id}`, { role: makeAdmin ? 'admin' : 'user', message });
+          notify(makeAdmin ? `${u.name} is now an admin` : `${u.name} is no longer an admin`);
+          refresh();
+        }}
+        onClose={closeDialog}
+      />
+    );
+  };
+
+  const resetPassword = (u) =>
+    openDialog(
+      <ActionDialog
+        title={`Reset ${u.name}'s password?`}
+        confirmLabel="Reset password"
+        tone="danger"
+        messagePlaceholder="e.g. She forgot her password and asked for a reset."
+        preview={() => (
+          <p>
+            A temporary password is created and shown to you once. {u.name} is signed out everywhere and must choose a new
+            password the next time they sign in with it.
+          </p>
+        )}
+        onConfirm={async (message) => {
+          const r = await api.post(`/admin/users/${u.id}/reset-password`, { message });
+          refresh();
+          // replace the confirm dialog with the one-time result
+          setTimeout(() => openDialog(<TempPassword name={u.name} email={u.email} password={r.tempPassword} onClose={closeDialog} />), 0);
+        }}
+        onClose={closeDialog}
+      />
+    );
 
   return (
     <div className="page">
@@ -103,6 +148,7 @@ export default function Admin() {
               <option value="">All sections</option>
               <option value="powerbi">Power BI</option>
               <option value="cases">Case studies</option>
+              <option value="account">Account</option>
             </select>
             <select value={filters.action} onChange={set('action')}>
               <option value="">All actions</option>
@@ -134,7 +180,7 @@ export default function Admin() {
       ) : (
         <div className="card">
           <div className="table-wrap">
-            <table className="table">
+            <table className="table cards-on-mobile">
               <thead>
                 <tr>
                   <th>User</th><th>Role</th><th>Joined</th><th>Power BI</th><th>Case studies</th><th>Changes</th><th>Last active</th><th />
@@ -143,27 +189,32 @@ export default function Admin() {
               <tbody>
                 {users.map((u) => (
                   <tr key={u.id}>
-                    <td><div className="nowrap"><strong>{u.name}</strong></div><div className="muted tiny">{u.email}</div></td>
-                    <td>{u.role ? <span className={`badge ${u.role === 'admin' ? 'violet' : 'gray'}`}>{u.role}</span> : <span className="muted small">—</span>}</td>
-                    <td className="nowrap small">{fmtDateTime(u.createdAt)}</td>
-                    <td className="small">
+                    <td className="user-cell" data-label="User"><div className="nowrap"><strong>{u.name}</strong></div><div className="muted tiny">{u.email}</div></td>
+                    <td data-label="Role">{u.role ? <span className={`badge ${u.role === 'admin' ? 'violet' : 'gray'}`}>{u.role}</span> : <span className="muted small">—</span>}</td>
+                    <td className="nowrap small" data-label="Joined">{u.createdAt ? fmtDateTime(u.createdAt) : '—'}</td>
+                    <td className="small" data-label="Power BI">
                       <div className="mini-prog"><div className="bar"><div style={{ width: `${u.pbiDone}%`, background: 'var(--pbi)' }} /></div>{u.pbiDone}/100</div>
                       <div className="muted tiny">{u.pbiStart ? `from ${fmt(u.pbiStart, 'dm')}` : 'not started'}</div>
                     </td>
-                    <td className="small">
+                    <td className="small" data-label="Case studies">
                       <div className="mini-prog"><div className="bar"><div style={{ width: `${(u.casesDone / 41) * 100}%`, background: 'var(--cs)' }} /></div>{u.casesDone}/41</div>
                       <div className="muted tiny">{u.casesStart ? `from ${fmt(u.casesStart, 'dm')}` : 'not started'}</div>
                     </td>
-                    <td>
+                    <td data-label="Changes">
                       <button className="link" onClick={() => { setFilters({ ...EMPTY, userId: String(u.id) }); setPage(1); setTab('activity'); }}>{u.events}</button>
                     </td>
-                    <td className="nowrap small">{u.lastActivity ? relTime(u.lastActivity) : '—'}</td>
-                    <td>
+                    <td className="nowrap small" data-label="Last active">{u.lastActivity ? relTime(u.lastActivity) : '—'}</td>
+                    <td className="actions-cell">
                       {!EMBEDDED && u.id !== user.id && (
-                        <button className="btn tiny" onClick={() => setRole(u, u.role === 'admin' ? 'user' : 'admin')}>
-                          {u.role === 'admin' ? 'Remove admin' : 'Make admin'}
-                        </button>
+                        <div className="row gap wrap">
+                          <button className="btn tiny" onClick={() => changeRole(u)}>
+                            <Icon name="shield" size={13} /> {u.role === 'admin' ? 'Remove admin' : 'Make admin'}
+                          </button>
+                          <button className="btn tiny" onClick={() => resetPassword(u)}>Reset password</button>
+                        </div>
                       )}
+                      {!EMBEDDED && u.id === user.id && <span className="muted tiny">You · <a href="#account">change password</a></span>}
+                      {u.mustChangePassword && <div className="muted tiny">Waiting for a new password</div>}
                     </td>
                   </tr>
                 ))}
@@ -173,5 +224,29 @@ export default function Admin() {
         </div>
       )}
     </div>
+  );
+}
+
+function TempPassword({ name, email, password, onClose }) {
+  const [copied, setCopied] = useState(false);
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(password);
+      setCopied(true);
+    } catch {
+      setCopied(false);
+    }
+  }
+  return (
+    <Modal title="Temporary password" onClose={onClose} footer={<button className="btn primary" onClick={onClose}>Done</button>}>
+      <div className="stack">
+        <p>Give this to {name} ({email}). It is shown only once.</p>
+        <div className="temp-pw">
+          <code>{password}</code>
+          <button className="btn small" onClick={copy}>{copied ? 'Copied' : 'Copy'}</button>
+        </div>
+        <p className="muted small">When they sign in with it, they'll be asked to choose a new password before anything else.</p>
+      </div>
+    </Modal>
   );
 }
