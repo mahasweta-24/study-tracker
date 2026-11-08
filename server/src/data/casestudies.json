@@ -1,0 +1,1309 @@
+{
+ "title": "Sales & Marketing Case Study Study Plan",
+ "phases": [
+  {
+   "n": 1,
+   "weeks": "1-6",
+   "title": "Indian companies and organisations",
+   "intro": "Start here: 19 Indian cases on brands you already know, covering FMCG, rural selling, advertising, crisis recovery, pricing wars and new-age D2C brands. The IIM, ISB and ICMR versions are paid; the links below are free explainers."
+  },
+  {
+   "n": 2,
+   "weeks": "7-10",
+   "title": "International companies",
+   "intro": "Next, 12 global cases that IIM and ISB marketing courses use to teach brand building, experience design, localisation, purpose marketing and digital growth. WARC links show award-winning campaign write-ups; a free WARC account unlocks some of them."
+  },
+  {
+   "n": 3,
+   "weeks": "11-13",
+   "title": "Classic must-know cases",
+   "intro": "Finish with 10 classics: the Harvard decision cases most often used in IIM and ISB marketing courses, the failures every interviewer expects you to know, and the foundational ideas behind them. Harvard cases cost about $10-12 each on Harvard Business Publishing; the free student analyses below are enough to start."
+  }
+ ],
+ "weeks": [
+  {
+   "n": 1,
+   "title": "FMCG giants and the fight for the mass market",
+   "phase": 1
+  },
+  {
+   "n": 2,
+   "title": "Advertising and brand trust",
+   "phase": 1
+  },
+  {
+   "n": 3,
+   "title": "Selling to rural and value-conscious India",
+   "phase": 1
+  },
+  {
+   "n": 4,
+   "title": "Crisis, pricing wars and positioning mistakes",
+   "phase": 1
+  },
+  {
+   "n": 5,
+   "title": "Turnarounds and digital-first brands",
+   "phase": 1
+  },
+  {
+   "n": 6,
+   "title": "Omnichannel, service excellence and a cautionary tale",
+   "phase": 1
+  },
+  {
+   "n": 7,
+   "title": "Building iconic global brands",
+   "phase": 2
+  },
+  {
+   "n": 8,
+   "title": "Customer experience and going global",
+   "phase": 2
+  },
+  {
+   "n": 9,
+   "title": "Purpose and content marketing",
+   "phase": 2
+  },
+  {
+   "n": 10,
+   "title": "Turnarounds and digital disruption",
+   "phase": 2
+  },
+  {
+   "n": 11,
+   "title": "Harvard decision cases used in Indian B-schools",
+   "phase": 3,
+   "intro": "These are 'what should the manager do?' cases. Read the summary, decide your answer before reading anyone else's, then compare."
+  },
+  {
+   "n": 12,
+   "title": "Famous failures every interviewer asks about",
+   "phase": 3
+  },
+  {
+   "n": 13,
+   "title": "Foundations that tie everything together",
+   "phase": 3
+  }
+ ],
+ "cases": [
+  {
+   "id": 1,
+   "title": "Amul: building India's biggest food brand as a farmers' co-op",
+   "week": 1,
+   "phase": 1,
+   "story": "A Gujarat dairy co-operative took on multinationals with low prices, huge distribution and the Amul girl topical ads running since 1966.",
+   "learn": "Value-for-money positioning, mass-market distribution, mascot-led brand building.",
+   "frameworks": "4Ps, STP, brand equity.",
+   "read": "ICMR case summary: Amul's marketing evolution · IBS case: Amul ice cream vs Kwality Walls",
+   "watch": "YouTube: Amul marketing case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "ICMR case summary: Amul's marketing evolution",
+     "url": "https://icmrindia.org/Casestudies/catalogue/Marketing1/MKTA011.htm"
+    },
+    {
+     "text": "IBS case: Amul ice cream vs Kwality Walls",
+     "url": "https://ibscdc.org/Case_Studies/Marketing/Marketing%20Strategies/MKS0136IRC.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Amul marketing case study (search)",
+     "url": "https://www.youtube.com/results?search_query=amul+marketing+strategy+case+study"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "title": "Surf vs Nirma: Lalitaji and the detergent war",
+   "week": 1,
+   "phase": 1,
+   "story": "Nirma sold detergent at a third of Surf's price and grabbed the mass market. HLL fought back with the Lalitaji ads (value over cheapness) and later launched Wheel as a low-price fighter brand.",
+   "learn": "Responding to a low-cost challenger, fighter brands, positioning on value rather than price.",
+   "frameworks": "Porter's generic strategies, market leader vs challenger, Ansoff.",
+   "read": "exchange4media: why Lalitaji worked · StartupTalky: rise and fall of Nirma · Unstop: Nirma, the underdog",
+   "watch": "YouTube: Nirma vs Surf case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "exchange4media: why Lalitaji worked",
+     "url": "https://www.exchange4media.com/advertising-news/lalitaji-was-the-embodiment-of-the-brand-not-just-a-mascot-132648.html"
+    },
+    {
+     "text": "StartupTalky: rise and fall of Nirma",
+     "url": "https://startuptalky.com/rise-and-fall-of-nirma/"
+    },
+    {
+     "text": "Unstop: Nirma, the underdog",
+     "url": "https://unstop.com/blog/newbie-to-numero-uno-nirmas-story-of-emerging-as-the-successful-underdog"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Nirma vs Surf case study (search)",
+     "url": "https://www.youtube.com/results?search_query=nirma+vs+surf+case+study"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "title": "HUL Project Shakti: rural women as the last-mile sales force",
+   "week": 1,
+   "phase": 1,
+   "story": "From 2001, HUL trained rural women (Shakti Ammas) as micro-entrepreneurs selling its products in small villages that its distributors could not reach profitably.",
+   "learn": "Rural distribution, inclusive business models, creating a new sales channel.",
+   "frameworks": "Bottom of the Pyramid, channel design, 4As of rural marketing (Availability, Affordability, Acceptability, Awareness).",
+   "read": "buildd: how Project Shakti powers HUL's rural growth · A4S case study on Shakti Ammas · Business Today feature",
+   "watch": "YouTube: HUL Project Shakti (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "buildd: how Project Shakti powers HUL's rural growth",
+     "url": "https://buildd.co/product/hul-project-shakti"
+    },
+    {
+     "text": "A4S case study on Shakti Ammas",
+     "url": "https://www.accountingforsustainability.org/en/knowledge-hub/case-studies/hindustan-unilever-rural-sales-livelihoods-shakti-ammas.html"
+    },
+    {
+     "text": "Business Today feature",
+     "url": "https://www.businesstoday.in/magazine/special/project-shakti-helped-thousands-of-women-and-also-men/story/195911.html"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: HUL Project Shakti (search)",
+     "url": "https://www.youtube.com/results?search_query=HUL+project+shakti+case+study"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "title": "Fevicol: making glue a household name",
+   "week": 2,
+   "phase": 1,
+   "story": "Pidilite turned a B2B adhesive for carpenters into an iconic consumer brand through decades of humorous ads on one idea: an unbreakable bond.",
+   "learn": "Consistent creative idea over decades, building brand in a low-interest category, influencing both end users and trade (carpenters).",
+   "frameworks": "Integrated marketing communication (IMC), positioning, push vs pull strategy.",
+   "read": "ICMR: Fevicol positioning and promotion · Karnavati journal case: Fevicol's IMC journey (free) · IMT case: Fevicol positioning (free)",
+   "watch": "YouTube: Fevicol ads and strategy (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "ICMR: Fevicol positioning and promotion",
+     "url": "https://icmrindia.org/Casestudies/catalogue/Marketing/MKTG368.htm"
+    },
+    {
+     "text": "Karnavati journal case: Fevicol's IMC journey (free)",
+     "url": "https://journal.karnavatiuniversity.edu.in/index.php/kjms/article/view/11"
+    },
+    {
+     "text": "IMT case: Fevicol positioning (free)",
+     "url": "https://jetbm.imtnagpur.ac.in/journal/vol7/iss2/2"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Fevicol ads and strategy (search)",
+     "url": "https://www.youtube.com/results?search_query=fevicol+marketing+strategy+case+study"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "title": "Cadbury India: the 2003 worm crisis",
+   "week": 2,
+   "phase": 1,
+   "story": "Weeks before Diwali, worms were found in Dairy Milk bars in Maharashtra. Sales fell sharply. Cadbury responded with new tamper-proof packaging, a retailer education drive and ads with Amitabh Bachchan, and recovered within months.",
+   "learn": "Crisis communication, rebuilding trust, using a credible endorser.",
+   "frameworks": "Crisis management stages, brand trust, stakeholder mapping.",
+   "read": "MBA Knowledge Base: Cadbury worm controversy · ICMR caselet on the controversy",
+   "watch": "YouTube: Cadbury worm crisis (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "MBA Knowledge Base: Cadbury worm controversy",
+     "url": "https://mbaknol.com/management-case-studies/case-study-cadbury-crisis-management-worm-controversy"
+    },
+    {
+     "text": "ICMR caselet on the controversy",
+     "url": "https://icmrindia.org/Short%20Case%20Studies/Sales%20and%20Distribution%20Management/CLSDM042.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Cadbury worm crisis (search)",
+     "url": "https://www.youtube.com/results?search_query=cadbury+worm+crisis+case+study"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "title": "Tanishq: winning trust in a market ruled by local jewellers",
+   "week": 2,
+   "phase": 1,
+   "story": "Tanishq struggled after its 1994 launch. It turned around by installing Karatmeters so customers could test the purity of any gold, exposing impure local jewellery and positioning Tanishq on trust.",
+   "learn": "Using transparency as a brand weapon, organising a fragmented market, premium pricing justified by trust.",
+   "frameworks": "Positioning, consumer decision journey, brand turnaround.",
+   "read": "buildd: Tanishq's Karatmeter masterstroke · ICMR free case: Tanishq turnaround · afaqs brand case: Tanishq",
+   "watch": "YouTube: Tanishq case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "buildd: Tanishq's Karatmeter masterstroke",
+     "url": "https://buildd.co/product/tanishq-business-strategy"
+    },
+    {
+     "text": "ICMR free case: Tanishq turnaround",
+     "url": "https://icmrindia.org/free%20resources/casestudies/Tanishq-marketing.htm"
+    },
+    {
+     "text": "afaqs brand case: Tanishq",
+     "url": "https://www.afaqs.com/casestudy/lifestyle/tanishq"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Tanishq case study (search)",
+     "url": "https://www.youtube.com/results?search_query=tanishq+karatmeter+case+study"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "title": "CavinKare Chik: the sachet revolution",
+   "week": 3,
+   "phase": 1,
+   "story": "C.K. Ranganathan launched Chik shampoo in small sachets, ran a 'return empty sachets, get one free' scheme and later a 50-paise sachet, opening shampoo to rural buyers.",
+   "learn": "Small unit packs, price-point marketing, inducing trial.",
+   "frameworks": "Bottom of the Pyramid, 4As of rural marketing, sales promotion.",
+   "read": "ThePrint: CavinKare, the original Middle India brand · Business Standard: how Chik took the rural market",
+   "watch": "YouTube: Think School, CHIK shampoo case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "ThePrint: CavinKare, the original Middle India brand",
+     "url": "https://theprint.in/pageturner/excerpt/cavinkare-shampoo-sachet-that-was-the-true-pioneer-of-middle-india-market/1209049"
+    },
+    {
+     "text": "Business Standard: how Chik took the rural market",
+     "url": "https://www.business-standard.com/article/management/chik-mate-103060301078_1.html"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Think School, CHIK shampoo case study (search)",
+     "url": "https://www.youtube.com/results?search_query=think+school+chik+shampoo+case+study"
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "title": "ITC e-Choupal: internet kiosks for farmers",
+   "week": 3,
+   "phase": 1,
+   "story": "ITC set up internet kiosks in villages so farmers could check prices and sell crops directly to ITC, bypassing middlemen. The same network later sold products into villages.",
+   "learn": "Building a two-way rural channel, technology in distribution, creating shared value.",
+   "frameworks": "Bottom of the Pyramid, value chain, channel design.",
+   "read": "Harvard case listing: ITC e-Choupal · SIBM Pune free case note",
+   "watch": "YouTube: ITC e-Choupal explained (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Harvard case listing: ITC e-Choupal",
+     "url": "https://store.hbr.org/product/itc-e-choupal-corporate-social-responsibility-in-rural-india/HKU765"
+    },
+    {
+     "text": "SIBM Pune free case note",
+     "url": "https://samvad.sibmpune.edu.in/index.php/samvad/article/view/98231"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: ITC e-Choupal explained (search)",
+     "url": "https://www.youtube.com/results?search_query=ITC+e-choupal+case+study"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "title": "Asian Paints: winning through distribution",
+   "week": 3,
+   "phase": 1,
+   "story": "Asian Paints skipped bulk buyers and went straight to small retail dealers across India, using small packs, wide reach and later strong IT and demand forecasting. It became the market leader by distance.",
+   "learn": "Distribution as a competitive advantage, dealer management, demand forecasting.",
+   "frameworks": "Channel strategy, 4Ps (especially Place), Porter's Five Forces.",
+   "read": "MBA Skool: Asian Paints marketing mix · Marketing Monk: how Asian Paints got 53% share · Business Standard on its distribution innovations",
+   "watch": "YouTube: Asian Paints case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "MBA Skool: Asian Paints marketing mix",
+     "url": "https://www.mbaskool.com/marketing-mix/products/16979-asian-paints.html"
+    },
+    {
+     "text": "Marketing Monk: how Asian Paints got 53% share",
+     "url": "https://marketingmonk.so/p/how-asian-paints-secured-a-53-market-share"
+    },
+    {
+     "text": "Business Standard on its distribution innovations",
+     "url": "https://business-standard.com/article/management/messages-in-coats-106031701043_1.html"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Asian Paints case study (search)",
+     "url": "https://www.youtube.com/results?search_query=asian+paints+business+case+study"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "title": "Maggi: the 2015 ban and comeback",
+   "week": 4,
+   "phase": 1,
+   "story": "In June 2015, Maggi was banned nationwide over lead and MSG allegations. Nestle destroyed tonnes of stock, fought in court, relaunched in November 2015 with a nostalgia-led campaign and regained most of its share.",
+   "learn": "Crisis response, relaunch strategy, emotional brand loyalty.",
+   "frameworks": "Crisis management, brand equity, relaunch marketing mix.",
+   "read": "The Quint: how Nestle overcame the Maggi crisis · Storyboard18: Nestle and Prasoon Joshi on the comeback · ICMR: Repositioning Maggi",
+   "watch": "YouTube: Maggi ban case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "The Quint: how Nestle overcame the Maggi crisis",
+     "url": "https://www.thequint.com/lifestyle/books/excerpts-how-nestle-overcame-the-2015-maggie-crisis"
+    },
+    {
+     "text": "Storyboard18: Nestle and Prasoon Joshi on the comeback",
+     "url": "https://www.storyboard18.com/brand-makers/nestles-suresh-narayanan-prasoon-joshi-reveal-the-secret-to-maggis-remarkable-comeback-60628.htm"
+    },
+    {
+     "text": "ICMR: Repositioning Maggi",
+     "url": "https://icmrindia.org/Casestudies/catalogue/Marketing/MKTG390.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Maggi ban case study (search)",
+     "url": "https://www.youtube.com/results?search_query=maggi+ban+comeback+case+study"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "title": "Reliance Jio: free data and the telecom shake-up",
+   "week": 4,
+   "phase": 1,
+   "story": "Jio launched in September 2016 with free calls and data, forcing rivals to slash prices. Several operators merged or exited. IIM Ahmedabad also has a companion case on Airtel's response.",
+   "learn": "Penetration pricing, disruption, how incumbents should respond.",
+   "frameworks": "Pricing strategy, Porter's Five Forces, game theory basics.",
+   "read": "IMT Hyderabad: how Jio revolutionised telecom · ICMR: Jio disrupting Indian telecom · IIMA case: Airtel's pricing response",
+   "watch": "YouTube: Jio case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "IMT Hyderabad: how Jio revolutionised telecom",
+     "url": "https://blog.imthyderabad.edu.in/reliance-jio-case-study/"
+    },
+    {
+     "text": "ICMR: Jio disrupting Indian telecom",
+     "url": "https://icmrindia.org/casestudies/catalogue/Business%20Strategy/BSTR519.htm"
+    },
+    {
+     "text": "IIMA case: Airtel's pricing response",
+     "url": "https://cases.iima.ac.in/index.php/airtel-pricing-in-an-era-of-cannibalization-and-transition-to-data.html"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Jio case study (search)",
+     "url": "https://www.youtube.com/results?search_query=reliance+jio+marketing+case+study"
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "title": "Patanjali: Ayurveda, swadeshi and FMCG disruption",
+   "week": 4,
+   "phase": 1,
+   "story": "Patanjali grew fast by selling low-priced Ayurvedic products with swadeshi messaging and Baba Ramdev as its face, forcing HUL, Colgate and others to launch natural ranges. Later growth slowed amid quality and regulatory issues.",
+   "learn": "Founder-led branding, cultural positioning, competitor response, risks of over- claiming.",
+   "frameworks": "Blue Ocean, positioning, SWOT.",
+   "read": "IIM Bangalore Tejas: Patanjali analysis (free PDF) · ICMR: Patanjali, disruptive force in FMCG",
+   "watch": "YouTube: Patanjali case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "IIM Bangalore Tejas: Patanjali analysis (free PDF)",
+     "url": "https://tejas.iimb.ac.in/articles/Patanajali_Tejas_Mar17.pdf"
+    },
+    {
+     "text": "ICMR: Patanjali, disruptive force in FMCG",
+     "url": "https://icmrindia.org/Casestudies/catalogue/Marketing/MKTG362.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Patanjali case study (search)",
+     "url": "https://www.youtube.com/results?search_query=patanjali+business+case+study"
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "title": "Tata Nano: why the world's cheapest car failed",
+   "week": 4,
+   "phase": 1,
+   "story": "Launched in 2009 at about Rs 1 lakh, the Nano was marketed as the cheapest car. Buyers did not want to be seen in a 'cheap' car, early fire incidents hurt trust, and sales never reached targets.",
+   "learn": "Positioning failure, aspiration vs price, the gap between a great product and a wanted product.",
+   "frameworks": "STP, consumer behaviour, positioning.",
+   "read": "WARC/MICA: marketing a good product badly · Pepper Content: why the Nano brand failed",
+   "watch": "YouTube: Tata Nano failure case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "WARC/MICA: marketing a good product badly",
+     "url": "https://www.warc.com/content/article/tata-nano-a-case-study-in-marketing-a-good-product-badly/96052"
+    },
+    {
+     "text": "Pepper Content: why the Nano brand failed",
+     "url": "https://www.peppercontent.io/blog/why-tata-nano-branding-was-a-failure"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Tata Nano failure case study (search)",
+     "url": "https://www.youtube.com/results?search_query=tata+nano+failure+case+study"
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "title": "Royal Enfield: from near-shutdown to global icon",
+   "week": 5,
+   "phase": 1,
+   "story": "In the early 2000s Eicher almost closed Royal Enfield. Siddhartha Lal kept it, fixed quality and leaned into heritage and leisure riding instead of mileage, creating a premium mid-size segment.",
+   "learn": "Brand turnaround, community building, premiumisation.",
+   "frameworks": "Positioning, brand revitalisation, customer communities.",
+   "read": "Finshots: Eicher's moment of reckoning · StartupTalky: Royal Enfield revival · Outlook Business: Siddhartha Lal",
+   "watch": "YouTube: Royal Enfield turnaround (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Finshots: Eicher's moment of reckoning",
+     "url": "https://cred.finshots.in/eichers-moment-of-reckoning/"
+    },
+    {
+     "text": "StartupTalky: Royal Enfield revival",
+     "url": "https://startuptalky.com/royal-enfield-case-study/"
+    },
+    {
+     "text": "Outlook Business: Siddhartha Lal",
+     "url": "https://www.outlookbusiness.com/the-big-story/lead-story/siddhartha-lal-an-indian-powerhouse-on-two-wheels-6676"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Royal Enfield turnaround (search)",
+     "url": "https://www.youtube.com/results?search_query=royal+enfield+turnaround+case+study"
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "title": "Zomato: brand voice and push notifications",
+   "week": 5,
+   "phase": 1,
+   "story": "Zomato built a witty, meme-friendly brand voice and famous push notifications to drive repeat orders in a discount-heavy market against Swiggy.",
+   "learn": "Digital brand voice, retention marketing, social media as a growth channel.",
+   "frameworks": "Customer journey, AARRR funnel, brand personality.",
+   "read": "buildd: Zomato marketing strategy · IIDE: Zomato digital marketing case",
+   "watch": "YouTube: Zomato marketing strategy (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "buildd: Zomato marketing strategy",
+     "url": "https://buildd.co/marketing/zomato-marketing-strategy"
+    },
+    {
+     "text": "IIDE: Zomato digital marketing case",
+     "url": "https://iide.co/case-studies/zomato-digital-marketing-strategy/"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Zomato marketing strategy (search)",
+     "url": "https://www.youtube.com/results?search_query=zomato+marketing+strategy+case+study"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "title": "boAt: India's D2C audio brand",
+   "week": 5,
+   "phase": 1,
+   "story": "boAt sold affordable, stylish earphones online through Amazon and Flipkart, used influencers, cricket and pop culture, and became India's top audio brand before growth flattened.",
+   "learn": "D2C playbook, influencer marketing, lifestyle positioning of a gadget.",
+   "frameworks": "STP, digital marketing funnel, product life cycle.",
+   "read": "The D2C Pulse: boAt case study · afaqs brand case: boAt · Emerald case: boAt marketing strategy",
+   "watch": "YouTube: boAt case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "The D2C Pulse: boAt case study",
+     "url": "https://thed2cpulse.com/?p=714"
+    },
+    {
+     "text": "afaqs brand case: boAt",
+     "url": "https://www.afaqs.com/casestudy/ConsumerElectronics/boat"
+    },
+    {
+     "text": "Emerald case: boAt marketing strategy",
+     "url": "https://www.emerald.com/insight/content/doi/10.1108/TCJ-06-2021-0087/full/html"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: boAt case study (search)",
+     "url": "https://www.youtube.com/results?search_query=boat+marketing+strategy+case+study"
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "title": "Lenskart: omnichannel eyewear",
+   "week": 6,
+   "phase": 1,
+   "story": "Lenskart started online, then realised eyewear needs eye tests and try-ons, so it built thousands of stores, home eye tests, virtual try-on and its own manufacturing.",
+   "learn": "Omnichannel retail, solving trust in an online category, vertical integration.",
+   "frameworks": "Customer journey, 7Ps, Porter's value chain.",
+   "read": "The D2C Pulse: Lenskart omnichannel strategy · ICMR: Lenskart in the Indian eyewear market · upGrowth: Lenskart GTM teardown",
+   "watch": "YouTube: Lenskart case study (search)",
+   "tip": "you see this model from the store floor every day. Add your own observations on walk-ins, eye tests and online-to-store handoffs to your notes; that turns this case into a portfolio piece.",
+   "readLinks": [
+    {
+     "text": "The D2C Pulse: Lenskart omnichannel strategy",
+     "url": "https://www.thed2cpulse.com/case-studies/lenskart-omnichannel-strategy-case-study/"
+    },
+    {
+     "text": "ICMR: Lenskart in the Indian eyewear market",
+     "url": "https://icmrindia.org/casestudies/catalogue/Marketing/MKTG383.htm"
+    },
+    {
+     "text": "upGrowth: Lenskart GTM teardown",
+     "url": "https://upgrowth.in/lenskart-built-india-eyewear-empire-gtm-strategy-teardown/"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Lenskart case study (search)",
+     "url": "https://www.youtube.com/results?search_query=lenskart+business+case+study"
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "title": "Mumbai Dabbawalas: near-perfect service at low cost",
+   "week": 6,
+   "phase": 1,
+   "story": "About 5,000 dabbawalas deliver and return around 130,000 lunchboxes a day with very few errors, using a colour code, local trains and a flat co-operative structure. Harvard teaches it as 'The Dabbawala System'.",
+   "learn": "Service quality, process design, people over technology.",
+   "frameworks": "Service marketing 7Ps, service quality (SERVQUAL), operations basics.",
+   "read": "The World: what Harvard learned from the dabbawalas · The Edge: the Harvard case explained",
+   "watch": "YouTube: Mumbai Dabbawala case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "The World: what Harvard learned from the dabbawalas",
+     "url": "https://theworld.org/stories/2014-04-16/what-harvard-learned-studying-indias-lunchbox-delivery-system"
+    },
+    {
+     "text": "The Edge: the Harvard case explained",
+     "url": "https://theedgemalaysia.com/article/what-harvard-learning-mumbai-dabbawalas"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Mumbai Dabbawala case study (search)",
+     "url": "https://www.youtube.com/results?search_query=mumbai+dabbawala+case+study"
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "title": "Byju's: when aggressive selling destroys a brand",
+   "week": 6,
+   "phase": 1,
+   "story": "India's most valued startup grew on heavy advertising and high-pressure sales to parents, often on loans. Complaints, losses and governance problems led to collapse.",
+   "learn": "Ethics in sales, customer lifetime value vs short-term targets, brand trust.",
+   "frameworks": "Sales funnel, CLV, stakeholder analysis.",
+   "read": "Marketing Monk: marketing strategies that failed Byju's · Business Standard: the flameout of Byju's",
+   "watch": "YouTube: Byju's downfall case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Marketing Monk: marketing strategies that failed Byju's",
+     "url": "https://www.marketingmonk.so/p/marketing-strategies-that-failed-byju-s"
+    },
+    {
+     "text": "Business Standard: the flameout of Byju's",
+     "url": "https://www.business-standard.com/amp/opinion/columns/the-spectacular-flameout-of-byju-s-124022500613_1.html"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Byju's downfall case study (search)",
+     "url": "https://www.youtube.com/results?search_query=byjus+downfall+case+study"
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "title": "Nike: 'Just Do It' (1988)",
+   "week": 7,
+   "phase": 2,
+   "story": "In 1987 Nike was losing to Reebok and had laid off staff. Wieden+Kennedy's 'Just Do It' campaign shifted the brand from shoes to a mindset of personal achievement, and sales grew roughly tenfold in a decade.",
+   "learn": "Emotional branding, a simple durable tagline, athlete endorsements.",
+   "frameworks": "Brand positioning, brand equity, AIDA.",
+   "read": "Complex: how 'Just Do It' turned Nike around (by a former Nike marketing director) · Wikipedia: Just Do It (good timeline and sources)",
+   "watch": "YouTube: Nike Just Do It case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Complex: how 'Just Do It' turned Nike around (by a former Nike marketing director)",
+     "url": "https://www.complex.com/sneakers/a/riley-jones/nike-just-do-it-history"
+    },
+    {
+     "text": "Wikipedia: Just Do It (good timeline and sources)",
+     "url": "https://en.wikipedia.org/wiki/Just_Do_It"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Nike Just Do It case study (search)",
+     "url": "https://www.youtube.com/results?search_query=nike+just+do+it+campaign+case+study"
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "title": "Apple: 'Think Different' (1997)",
+   "week": 7,
+   "phase": 2,
+   "story": "Apple was near bankruptcy when Steve Jobs returned. He cut the product line and launched 'Think Different', which sold Apple's values rather than specs and set up the iMac comeback.",
+   "learn": "Values-led branding, brand turnaround, focus.",
+   "frameworks": "Brand identity, positioning, Simon Sinek's Golden Circle (why, how, what).",
+   "read": "Creative Review: the story of 'Think Different' · MBA Knowledge Base: Think Different case",
+   "watch": "YouTube: Apple Think Different ad and analysis (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Creative Review: the story of 'Think Different'",
+     "url": "https://creativereview.co.uk/apple-think-different-slogan"
+    },
+    {
+     "text": "MBA Knowledge Base: Think Different case",
+     "url": "https://mbaknol.com/management-case-studies/case-study-of-apple-inc-think-different"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Apple Think Different ad and analysis (search)",
+     "url": "https://www.youtube.com/results?search_query=apple+think+different+campaign+case+study"
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "title": "Coca-Cola: 'Share a Coke' (2011 onward)",
+   "week": 7,
+   "phase": 2,
+   "story": "Starting in Australia, Coca-Cola replaced its logo with popular first names on bottles to reconnect with young people. It rolled out to 70+ countries and lifted consumption.",
+   "learn": "Personalisation, packaging as media, user-generated content.",
+   "frameworks": "Integrated campaigns, consumer engagement, earned media.",
+   "read": "The Drum: lessons from Share a Coke · WARC: Share a Coke US · Vaia: Share a Coke explained",
+   "watch": "YouTube: Share a Coke case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "The Drum: lessons from Share a Coke",
+     "url": "https://www.thedrum.com/news/2014/01/28/case-study-what-share-coke-campaign-can-teach-other-brands"
+    },
+    {
+     "text": "WARC: Share a Coke US",
+     "url": "https://www.warc.com/content/article/coca-cola-share-a-coke-us/en-gb/104360"
+    },
+    {
+     "text": "Vaia: Share a Coke explained",
+     "url": "https://www.vaia.com/en-us/explanations/marketing/marketing-campaign-examples/share-a-coke-campaign"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Share a Coke case study (search)",
+     "url": "https://www.youtube.com/results?search_query=share+a+coke+campaign+case+study"
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "title": "Starbucks: the 'third place'",
+   "week": 8,
+   "phase": 2,
+   "story": "Howard Schultz built Starbucks as a 'third place' between home and work, selling an experience rather than coffee. Rapid expansion diluted it, and in 2008 Schultz closed hundreds of stores to restore it.",
+   "learn": "Experience marketing, premium pricing, protecting brand experience while scaling.",
+   "frameworks": "Service 7Ps, experiential marketing, brand positioning.",
+   "read": "ICMR: Starbucks, the Third Place · SMU case: rebuilding the Starbucks experience (free PDF) · Strong Towns: Starbucks and the third place",
+   "watch": "YouTube: Starbucks marketing case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "ICMR: Starbucks, the Third Place",
+     "url": "https://www.icmrindia.org/casestudies/catalogue/Marketing/MKTG322.htm"
+    },
+    {
+     "text": "SMU case: rebuilding the Starbucks experience (free PDF)",
+     "url": "https://cmp.smu.edu.sg/sites/cmp.smu.edu.sg/files/ami/7_AMI13_Starbucks.pdf"
+    },
+    {
+     "text": "Strong Towns: Starbucks and the third place",
+     "url": "https://www.strongtowns.org/journal/2024-8-2-from-hang-out-to-hurry-why-starbucks-wants-to-redefine-third-place"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Starbucks marketing case study (search)",
+     "url": "https://www.youtube.com/results?search_query=starbucks+third+place+marketing+case+study"
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "title": "McDonald's India: glocalisation",
+   "week": 8,
+   "phase": 2,
+   "story": "McDonald's entered India in 1996 without beef, created the McAloo Tikki and Maharaja Mac, separated veg and non-veg kitchens, and priced low to become an affordable family treat.",
+   "learn": "Glocalisation (global standards, local product), value pricing, cultural adaptation.",
+   "frameworks": "International marketing (standardise vs adapt), 4Ps, STP.",
+   "read": "PSG journal: McDonald's success story in India (free PDF) · Marketing Monk: McDonald's India marketing · Business Today archive: how McDonald's adapted",
+   "watch": "YouTube: McDonald's India case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "PSG journal: McDonald's success story in India (free PDF)",
+     "url": "https://jcrm.psgim.ac.in/index.php/jcrm/article/download/355/272/695"
+    },
+    {
+     "text": "Marketing Monk: McDonald's India marketing",
+     "url": "https://www.marketingmonk.so/p/the-marketing-sauce-of-mcdonald-s-india"
+    },
+    {
+     "text": "Business Today archive: how McDonald's adapted",
+     "url": "https://archives.digitaltoday.in/businesstoday/20011125/feature1.html"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: McDonald's India case study (search)",
+     "url": "https://www.youtube.com/results?search_query=mcdonalds+india+localization+case+study"
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "title": "IKEA India: entering a very different market",
+   "week": 8,
+   "phase": 2,
+   "story": "IKEA studied Indian homes for years, then opened in Hyderabad in 2018 with India-specific products, a local menu, assembly help and lower prices for price- sensitive shoppers.",
+   "learn": "Market entry research, localisation beyond the product, pricing for a new market.",
+   "frameworks": "PESTEL, market entry strategy, Bowman's strategy clock.",
+   "read": "Think Insights: IKEA's glocalisation blueprint for India · ICMR: IKEA's business model in India",
+   "watch": "YouTube: IKEA India case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Think Insights: IKEA's glocalisation blueprint for India",
+     "url": "https://thinkinsights.net/strategy/ikeas-glocalization-blueprint-india"
+    },
+    {
+     "text": "ICMR: IKEA's business model in India",
+     "url": "https://icmrindia.org/casestudies/catalogue/Business%20Strategy/BSTR445.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: IKEA India case study (search)",
+     "url": "https://www.youtube.com/results?search_query=ikea+india+entry+case+study"
+    }
+   ]
+  },
+  {
+   "id": 26,
+   "title": "Dove: Campaign for Real Beauty (2004 onward)",
+   "week": 9,
+   "phase": 2,
+   "story": "Research showed few women called themselves beautiful. Dove used real women in its ads and short films like 'Evolution' and 'Real Beauty Sketches', turning a soap into a self-esteem brand.",
+   "learn": "Insight-led advertising, purpose marketing, long-term brand platforms. Also study the criticism, as classes debate it.",
+   "frameworks": "Consumer insight, cause marketing, brand positioning.",
+   "read": "MBA Knowledge Base: Dove Real Beauty · ARF/Ogilvy award case (free PDF) · ICMR: Unilever's Real Beauty campaign",
+   "watch": "YouTube: Dove Real Beauty Sketches (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "MBA Knowledge Base: Dove Real Beauty",
+     "url": "https://mbaknol.com/management-case-studies/case-study-doves-campaign-for-real-beauty"
+    },
+    {
+     "text": "ARF/Ogilvy award case (free PDF)",
+     "url": "https://thearf-org-unified-admin.s3.amazonaws.com/ARF%20Ogilvy%20Award%20Case%20Studies/2007%20ARF%20David%20Ogivly%20Award%20CS/Dove_2007_Ogilvy_Case_Study.pdf"
+    },
+    {
+     "text": "ICMR: Unilever's Real Beauty campaign",
+     "url": "https://icmrindia.org/Casestudies/catalogue/Marketing/MKTG155.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Dove Real Beauty Sketches (search)",
+     "url": "https://www.youtube.com/results?search_query=dove+real+beauty+campaign+case+study"
+    }
+   ]
+  },
+  {
+   "id": 27,
+   "title": "Red Bull: Stratos and the brand-as-media-company",
+   "week": 9,
+   "phase": 2,
+   "story": "Red Bull barely advertises the drink. It sponsors and films extreme sports. In 2012 it live-streamed Felix Baumgartner's jump from the edge of space, watched by millions on YouTube.",
+   "learn": "Content marketing, owning a lifestyle, events as marketing.",
+   "frameworks": "Content strategy, brand associations, paid vs owned vs earned media.",
+   "read": "Digiday: what Red Bull teaches content marketers · Marketing Monk: the Stratos campaign · ICMR: Red Bull Stratosphere campaign",
+   "watch": "YouTube: Red Bull marketing strategy (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Digiday: what Red Bull teaches content marketers",
+     "url": "https://digiday.com/brands/what-red-bull-can-teach-content-marketers"
+    },
+    {
+     "text": "Marketing Monk: the Stratos campaign",
+     "url": "https://www.marketingmonk.so/p/stratos-marketing-campaign-by-red-bull"
+    },
+    {
+     "text": "ICMR: Red Bull Stratosphere campaign",
+     "url": "https://icmrindia.org/Casestudies/catalogue/Marketing/MKTG318.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Red Bull marketing strategy (search)",
+     "url": "https://www.youtube.com/results?search_query=red+bull+marketing+strategy+case+study"
+    }
+   ]
+  },
+  {
+   "id": 28,
+   "title": "Old Spice: 'The Man Your Man Could Smell Like' (2010)",
+   "week": 9,
+   "phase": 2,
+   "story": "P&G's Old Spice was seen as a grandfather's brand. A funny ad aimed at the women who buy body wash for men went viral, followed by 186 personalised YouTube replies, and it became the top men's body wash in the US.",
+   "learn": "Repositioning, targeting the buyer vs the user, real-time social marketing.",
+   "frameworks": "STP, buying roles (initiator, influencer, buyer, user), brand revitalisation.",
+   "read": "Advergize: Old Spice repositioning case · WARC: the 'Responses' campaign",
+   "watch": "YouTube: Old Spice case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Advergize: Old Spice repositioning case",
+     "url": "https://www.advergize.com/old-spice-marketing-strategy/"
+    },
+    {
+     "text": "WARC: the 'Responses' campaign",
+     "url": "https://www.warc.com/content/article/effies/old-spice-the-man-your-man-could-smell-like-responds-to-the-internet/en-gb/94321"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Old Spice case study (search)",
+     "url": "https://www.youtube.com/results?search_query=old+spice+man+your+man+could+smell+like+case+study"
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "title": "Domino's: the 'Pizza Turnaround' (2009)",
+   "week": 10,
+   "phase": 2,
+   "story": "Domino's ranked last on taste. It filmed executives reading harsh customer reviews, admitted its pizza was bad, reinvented the recipe and later rebuilt itself as a tech-led delivery brand.",
+   "learn": "Radical honesty, listening to customers, product plus communication working together.",
+   "frameworks": "Brand turnaround, voice of the customer, pratfall effect.",
+   "read": "Campaign: how Domino's became a tech company · WARC: Pizza Turnaround",
+   "watch": "YouTube: Domino's Pizza Turnaround (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Campaign: how Domino's became a tech company",
+     "url": "https://www.campaignlive.co.uk/article/case-study-dominos-crispin-porter-bogusky-transformed-pizza-chain-tech-company/1422647"
+    },
+    {
+     "text": "WARC: Pizza Turnaround",
+     "url": "https://www.warc.com/content/article/dominos-pizza-turnaround/en-gb/94400"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Domino's Pizza Turnaround (search)",
+     "url": "https://www.youtube.com/results?search_query=dominos+pizza+turnaround+case+study"
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "title": "Netflix vs Blockbuster",
+   "week": 10,
+   "phase": 2,
+   "story": "Netflix began as DVDs by mail with no late fees. Blockbuster reportedly declined to buy it for $50 million in 2000, depended on late fees, and went bankrupt in 2010 while Netflix moved to streaming.",
+   "learn": "Disruptive innovation, business model change, why market leaders miss threats.",
+   "frameworks": "Clayton Christensen's disruption theory, business model canvas, product life cycle.",
+   "read": "Commoncog: how Blockbuster nearly killed Netflix · Beyond the Crucible: adapt or die",
+   "watch": "YouTube: Netflix vs Blockbuster case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Commoncog: how Blockbuster nearly killed Netflix",
+     "url": "https://forum.commoncog.com/t/how-blockbuster-nearly-killed-netflix-and-then-stole-defeat-from-the-jaws-of-victory-commoncog-case-library/3673"
+    },
+    {
+     "text": "Beyond the Crucible: adapt or die",
+     "url": "https://beyondthecrucible.com/2019/09/adapt-or-die-how-netflix-took-down-blockbuster/"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Netflix vs Blockbuster case study (search)",
+     "url": "https://www.youtube.com/results?search_query=netflix+vs+blockbuster+case+study"
+    }
+   ]
+  },
+  {
+   "id": 31,
+   "title": "Airbnb: early growth hacking",
+   "week": 10,
+   "phase": 2,
+   "story": "Airbnb grew early supply and demand by letting hosts cross-post listings to Craigslist, and by founders personally photographing homes and recruiting hosts, things that 'don't scale'.",
+   "learn": "Growth hacking, solving the two-sided marketplace problem, borrowing an existing audience.",
+   "frameworks": "AARRR (pirate metrics) funnel, network effects, customer acquisition cost.",
+   "read": "Target Internet: growth hacking cases incl. Airbnb · HackerNoon: how Airbnb hacked Craigslist",
+   "watch": "YouTube: Airbnb growth story (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Target Internet: growth hacking cases incl. Airbnb",
+     "url": "https://targetinternet.com/resources/b2c-growth-hacking-marketing-case-studies/"
+    },
+    {
+     "text": "HackerNoon: how Airbnb hacked Craigslist",
+     "url": "https://hackernoon.com/lite/how-airbnb-hacked-craigslist-for-viral-growth-24l35eg"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Airbnb growth story (search)",
+     "url": "https://www.youtube.com/results?search_query=airbnb+growth+hacking+case+study"
+    }
+   ]
+  },
+  {
+   "id": 32,
+   "title": "Cola Wars Continue: Coke and Pepsi (HBS)",
+   "week": 11,
+   "phase": 3,
+   "story": "A century-long rivalry. Why has the soft drink concentrate business been so profitable, and how did Coke and Pepsi compete on bottling, pricing, brands and new drinks? It won the Case Centre's top award in 2015.",
+   "learn": "Industry analysis, competitive rivalry, why some industries make more money than others.",
+   "frameworks": "Porter's Five Forces (this is the classic case for it), value chain.",
+   "read": "Harvard Business Publishing: case listing",
+   "watch": "YouTube: Cola Wars case analysis (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Harvard Business Publishing: case listing",
+     "url": "https://store.hbr.org/product/cola-wars-continue-coke-vs-pepsi-in-the-twenty-first-century/702442"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Cola Wars case analysis (search)",
+     "url": "https://www.youtube.com/results?search_query=cola+wars+case+analysis+five+forces"
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "title": "Aqualisa Quartz: Simply a Better Shower (HBS)",
+   "week": 11,
+   "phase": 3,
+   "story": "A UK firm launched a technically superior, easy-to-install shower in 2001, but it did not sell. Plumbers, who influence most purchases, were not convinced.",
+   "learn": "Why great products fail, the role of channel influencers, choosing the right target segment for a launch.",
+   "frameworks": "STP, buying-decision influencers, diffusion of innovation.",
+   "read": "SlideShare: IIM Calcutta student analysis · SlideShare: Aqualisa case deck",
+   "watch": "YouTube: Aqualisa Quartz case (search)",
+   "tip": "search 'Aqualisa Quartz' on Harvard Business Publishing (case 502-030).",
+   "readLinks": [
+    {
+     "text": "SlideShare: IIM Calcutta student analysis",
+     "url": "https://www.slideshare.net/slideshow/aqualisa-quartz-sourabhiimc/82005184"
+    },
+    {
+     "text": "SlideShare: Aqualisa case deck",
+     "url": "https://www.slideshare.net/slideshow/aqualisa-28701473/28701473"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Aqualisa Quartz case (search)",
+     "url": "https://www.youtube.com/results?search_query=aqualisa+quartz+case+study"
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "title": "Natureview Farm (HBS)",
+   "week": 11,
+   "phase": 3,
+   "story": "A small natural yoghurt brand must grow revenue by over 50% in two years. Should it enter supermarkets (big volume, high slotting fees) or grow in natural food stores?",
+   "learn": "Channel decisions, the economics of retail (margins, slotting fees), growth options.",
+   "frameworks": "Channel strategy, break-even and margin analysis, Ansoff.",
+   "read": "SlideShare: Natureview case analysis · SlideShare: IIT Madras student analysis with numbers",
+   "watch": "YouTube: Natureview Farm case (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "SlideShare: Natureview case analysis",
+     "url": "https://www.slideshare.net/slideshow/natureview-farm-harvard-business-case/85702514"
+    },
+    {
+     "text": "SlideShare: IIT Madras student analysis with numbers",
+     "url": "https://www.slideshare.net/slideshow/natureview-farm-harvard-case-study-85746949/85746949"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Natureview Farm case (search)",
+     "url": "https://www.youtube.com/results?search_query=natureview+farm+case+study"
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "title": "Mountain Man Brewing: Bringing the Brand to Light (HBS)",
+   "week": 11,
+   "phase": 3,
+   "story": "A family brewery known for one strong, blue-collar lager sees sales slip as young drinkers move to light beer. Should it launch Mountain Man Light, risking its core brand?",
+   "learn": "Brand extension, cannibalisation, protecting brand equity.",
+   "frameworks": "Brand extension fit, Keller's brand equity, simple cannibalisation maths.",
+   "read": "SlideShare: Mountain Man case analysis · SlideShare: the case for not launching",
+   "watch": "YouTube: Mountain Man Brewing case (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "SlideShare: Mountain Man case analysis",
+     "url": "https://www.slideshare.net/slideshow/case-study-analysis-on-mountain-man-brewing-company-bringing-the-brand-to-light/120192393"
+    },
+    {
+     "text": "SlideShare: the case for not launching",
+     "url": "https://www.slideshare.net/slideshow/harvard-business-case-review-case-study/65551507"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Mountain Man Brewing case (search)",
+     "url": "https://www.youtube.com/results?search_query=mountain+man+brewing+case+study"
+    }
+   ]
+  },
+  {
+   "id": 36,
+   "title": "New Coke (1985)",
+   "week": 12,
+   "phase": 3,
+   "story": "Losing share to Pepsi, Coca-Cola replaced its formula with a sweeter one that won blind taste tests. Loyal customers revolted, and the original returned as 'Coca- Cola Classic' after 79 days.",
+   "learn": "Emotional brand attachment, the limits of market research, listening to customers.",
+   "frameworks": "Brand equity, consumer behaviour, research design.",
+   "read": "The Branding Journal: New Coke case study · EBSCO research starter: New Coke · ICMR caselet: Failure of New Coke",
+   "watch": "YouTube: New Coke failure (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "The Branding Journal: New Coke case study",
+     "url": "https://www.thebrandingjournal.com/2025/02/new-coke/"
+    },
+    {
+     "text": "EBSCO research starter: New Coke",
+     "url": "https://www.ebsco.com/research-starters/marketing/new-coke"
+    },
+    {
+     "text": "ICMR caselet: Failure of New Coke",
+     "url": "https://icmrindia.org/Short%20Case%20Studies/Marketing%20Management/CLMM020.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: New Coke failure (search)",
+     "url": "https://www.youtube.com/results?search_query=new+coke+1985+marketing+failure"
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "title": "Kodak: inventing the digital camera and still failing",
+   "week": 12,
+   "phase": 3,
+   "story": "A Kodak engineer built the first digital camera in 1975. Kodak protected its high- margin film business, moved too slowly into digital, and filed for bankruptcy in 2012.",
+   "learn": "The innovator's dilemma, self-cannibalisation, defining your business by customer need.",
+   "frameworks": "Disruptive innovation, product life cycle, marketing myopia.",
+   "read": "Chunka Mui: how Kodak failed · IBS case: Kodak's digital transition",
+   "watch": "YouTube: Why Kodak failed (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Chunka Mui: how Kodak failed",
+     "url": "https://chunkamui.medium.com/how-kodak-failed-e1f929e12aa7"
+    },
+    {
+     "text": "IBS case: Kodak's digital transition",
+     "url": "https://ibscdc.org/Case_Studies/Strategy/Growth%20Strategies/GRS0223K.htm"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Why Kodak failed (search)",
+     "url": "https://www.youtube.com/results?search_query=why+kodak+failed+case+study"
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "title": "Nokia: from number one to exit",
+   "week": 12,
+   "phase": 3,
+   "story": "Nokia led global mobile phones in the 2000s and even had touchscreen prototypes before the iPhone. It underrated software and app ecosystems, bet on Windows Phone, and sold its phone business in 2014.",
+   "learn": "Platform vs product competition, organisational fear and slow decisions, ecosystem thinking.",
+   "frameworks": "Disruption, SWOT, network effects.",
+   "read": "StartupTalky: why Nokia failed · London Business School case listing: Rise and Fall of Nokia",
+   "watch": "YouTube: Nokia downfall case study (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "StartupTalky: why Nokia failed",
+     "url": "https://startuptalky.com/reasons-why-nokia-failed/"
+    },
+    {
+     "text": "London Business School case listing: Rise and Fall of Nokia",
+     "url": "https://publishing.london.edu/cases/the-rise-and-fall-of-nokia/"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Nokia downfall case study (search)",
+     "url": "https://www.youtube.com/results?search_query=nokia+downfall+case+study"
+    }
+   ]
+  },
+  {
+   "id": 39,
+   "title": "Marketing Myopia (Theodore Levitt, HBR 1960)",
+   "week": 13,
+   "phase": 3,
+   "story": "Not a company case but the most famous marketing article. Railroads declined because they saw themselves in the railroad business, not the transport business. Companies fail when they focus on products instead of customer needs.",
+   "learn": "'What business are you really in?', customer orientation vs product orientation. Reread Kodak, Nokia and Blockbuster through this lens.",
+   "frameworks": "Marketing concept vs selling concept.",
+   "read": "Incubate Me: summary of Marketing Myopia · strategy+business: Marketing Myopia explained in 120 seconds",
+   "watch": "YouTube: HBR Explainer, Marketing Myopia (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Incubate Me: summary of Marketing Myopia",
+     "url": "https://incubateme.substack.com/p/marketing-myopia"
+    },
+    {
+     "text": "strategy+business: Marketing Myopia explained in 120 seconds",
+     "url": "https://strategy-business.com/blog/Best-of-Multimedia-Marketing-Myopia-in-120-Seconds"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: HBR Explainer, Marketing Myopia (search)",
+     "url": "https://www.youtube.com/results?search_query=HBR+explainer+marketing+myopia"
+    }
+   ]
+  },
+  {
+   "id": 40,
+   "title": "Harley-Davidson: the Harley Owners Group",
+   "week": 13,
+   "phase": 3,
+   "story": "Near collapse in the early 1980s, Harley created the Harley Owners Group (HOG) in 1983. Owners rode together, attended rallies and shaped products, and HOG grew past a million members.",
+   "learn": "Brand communities, loyalty beyond discounts, identity-based brands. Compare with Royal Enfield (case 14).",
+   "frameworks": "Customer lifetime value, brand community, relationship marketing.",
+   "read": "Think Insights: Harley-Davidson's cult brand playbook · ICMR caselet: the Harley-Davidson experience · MarketingProfs: from 28 riders to 365,000",
+   "watch": "YouTube: Harley-Davidson cult brand case (search)",
+   "tip": "",
+   "readLinks": [
+    {
+     "text": "Think Insights: Harley-Davidson's cult brand playbook",
+     "url": "https://thinkinsights.net/print/pdf/node/28985"
+    },
+    {
+     "text": "ICMR caselet: the Harley-Davidson experience",
+     "url": "https://icmrindia.org/Short%20Case%20Studies/Consumer%20Behavior/CLCB023.htm"
+    },
+    {
+     "text": "MarketingProfs: from 28 riders to 365,000",
+     "url": "https://www.marketingprofs.com/4/dsouza29.asp"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Harley-Davidson cult brand case (search)",
+     "url": "https://www.youtube.com/results?search_query=harley+davidson+cult+brand+case+study"
+    }
+   ]
+  },
+  {
+   "id": 41,
+   "title": "Southwest Airlines: low cost with personality",
+   "week": 13,
+   "phase": 3,
+   "story": "Southwest built a profitable airline on short point-to-point routes, one aircraft type, fast turnarounds, direct selling and a fun, people-first culture. IndiGo in India follows a similar playbook.",
+   "learn": "Aligning positioning with operations, cost leadership, culture as a marketing asset.",
+   "frameworks": "Porter's generic strategies, activity systems, service marketing.",
+   "read": "Naresh Navinash: Southwest's cost leadership case · Panmore: Southwest marketing mix",
+   "watch": "YouTube: Southwest Airlines strategy (search)",
+   "tip": "pair it with IndiGo's story: YouTube: IndiGo case study (search)",
+   "readLinks": [
+    {
+     "text": "Naresh Navinash: Southwest's cost leadership case",
+     "url": "https://nareshnavinash.substack.com/p/southwest-airlines-cost-leadership"
+    },
+    {
+     "text": "Panmore: Southwest marketing mix",
+     "url": "https://panmore.com/southwest-airlines-marketing-mix-4p-4ps"
+    }
+   ],
+   "watchLinks": [
+    {
+     "text": "YouTube: Southwest Airlines strategy (search)",
+     "url": "https://www.youtube.com/results?search_query=southwest+airlines+strategy+case+study"
+    },
+    {
+     "text": "YouTube: IndiGo case study (search)",
+     "url": "https://www.youtube.com/results?search_query=indigo+airlines+case+study"
+    }
+   ]
+  }
+ ]
+}

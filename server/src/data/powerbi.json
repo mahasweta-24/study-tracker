@@ -1,0 +1,2048 @@
+{
+ "title": "Power BI Roadmap: Beginner to Industry-Ready",
+ "iterations": [
+  {
+   "n": 1,
+   "title": "Foundations",
+   "range": "Days 1–30",
+   "goal": "By Day 30 you can take raw files, clean them, build a star schema, write core DAX measures and design a clean multi-page report on your own.",
+   "exit": "Import and clean a CSV · split a flat table into fact + dimensions · build a date table and mark it · write SUM, DIVIDE, CALCULATE, YoY % measures · build a 2-page report with slicers and a consistent theme."
+  },
+  {
+   "n": 2,
+   "title": "Working Analyst",
+   "range": "Days 31–65",
+   "goal": "By Day 65 you work the way a team analyst does: automate messy data loads, model multi-table data, write intermediate DAX, design reports people enjoy using, and publish, share, refresh and secure them in the Service.",
+   "exit": "Combine a folder of files with a parameterised path · explain query folding in one sentence · handle two date relationships with USERELATIONSHIP · write RANKX, rolling 3-month and closing-balance measures · fix a wrong matrix total · build drillthrough + tooltip pages · publish an app with row-level security."
+  },
+  {
+   "n": 3,
+   "title": "Industry-Ready",
+   "range": "Days 66–100",
+   "goal": "By Day 100 you can solve real business problems with advanced DAX patterns, make slow models fast, work with version control and Fabric, pass PL-300, and show three portfolio projects.",
+   "exit": "Explain expanded tables and KEEPFILTERS · build a time-intelligence calculation group · cut a model's size by 30%+ and show before/after in DAX Studio · save a project as PBIP and push it to GitHub · score 80%+ on the official PL-300 practice assessment · present your capstone in 5 minutes."
+  }
+ ],
+ "days": [
+  {
+   "day": 1,
+   "title": "What Power BI is",
+   "subtopics": "Desktop vs Service vs Mobile; the workflow get → transform → model → visualize → share; what a BI analyst does daily",
+   "learn": "What is Power BI, What is Desktop",
+   "practice": "Create your folder structure. Open Desktop, load the Financial Sample via Use sample data. Click through Report, Table, Model and DAX query views.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 1",
+   "groupTitle": "Orientation and your first report",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "What is Power BI",
+     "url": "https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-overview"
+    },
+    {
+     "text": "What is Desktop",
+     "url": "https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-what-is-desktop"
+    }
+   ]
+  },
+  {
+   "day": 2,
+   "title": "Getting data",
+   "subtopics": "Excel, CSV, folder sources; Navigator; Load vs Transform; Import vs DirectQuery (just the idea)",
+   "learn": "Connect to data, Data sources list",
+   "practice": "Download Financial Sample.xlsx and import it manually. Import one CSV of your choice.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 1",
+   "groupTitle": "Orientation and your first report",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Connect to data",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-quickstart-connect-to-data"
+    },
+    {
+     "text": "Data sources list",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-data-sources"
+    }
+   ]
+  },
+  {
+   "day": 3,
+   "title": "Power Query Editor tour",
+   "subtopics": "Ribbon, Applied Steps, formula bar, data types, rename, remove columns, filter rows, Close & Apply",
+   "learn": "What is Power Query, Power Query UI",
+   "practice": "On Financial Sample: fix data types, remove 2 columns, rename columns to plain English, filter out one segment. Delete a step and re-add it.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 1",
+   "groupTitle": "Orientation and your first report",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "What is Power Query",
+     "url": "https://learn.microsoft.com/en-us/power-query/power-query-what-is-power-query"
+    },
+    {
+     "text": "Power Query UI",
+     "url": "https://learn.microsoft.com/en-us/power-query/power-query-ui"
+    }
+   ]
+  },
+  {
+   "day": 4,
+   "title": "First visuals",
+   "subtopics": "Column/bar, line, card, table vs matrix, slicer; Format pane basics; titles",
+   "learn": "Visual types, Excel to stunning report tutorial",
+   "practice": "Follow the tutorial end to end.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 1",
+   "groupTitle": "Orientation and your first report",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Visual types",
+     "url": "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-types-for-reports-and-q-and-a"
+    },
+    {
+     "text": "Excel to stunning report tutorial",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-excel-stunning-report"
+    }
+   ]
+  },
+  {
+   "day": 5,
+   "title": "First DAX measures",
+   "subtopics": "Implicit vs explicit measures; SUM, AVERAGE, COUNTROWS, DISTINCTCOUNT, DIVIDE; why pros always write explicit measures",
+   "learn": "Learn DAX basics, Measures",
+   "practice": "Write: Total Sales, Total Profit, Profit Margin % (with DIVIDE), Order Count. Use them in cards.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 1",
+   "groupTitle": "Orientation and your first report",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Learn DAX basics",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-quickstart-learn-dax-basics"
+    },
+    {
+     "text": "Measures",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-measures"
+    }
+   ]
+  },
+  {
+   "day": 6,
+   "title": "Filters and interactions",
+   "subtopics": "Visual, page and report filters; cross-filter vs cross- highlight; Edit interactions; sorting",
+   "learn": "Add filters, Visual interactions",
+   "practice": "Add a page filter and a report filter. Stop one chart from filtering another.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 1",
+   "groupTitle": "Orientation and your first report",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Add filters",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-report-add-filter"
+    },
+    {
+     "text": "Visual interactions",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions"
+    }
+   ]
+  },
+  {
+   "day": 7,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "Reread your notes",
+   "practice": "From a blank file, rebuild a 1-page \"Financial Overview\": 4 KPI cards, a trend line, a bar by country, 2 slicers. Time yourself.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 1",
+   "groupTitle": "Orientation and your first report",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 8,
+   "title": "Data profiling",
+   "subtopics": "Column quality, distribution, profile; profiling on full dataset vs top 1,000 rows; nulls and errors",
+   "learn": "Data profiling tools, Dealing with errors",
+   "practice": "Download a table from data.gov.in. Turn on profiling; list every quality issue you see in your notes.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 2",
+   "groupTitle": "Power Query essentials (cleaning data)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Data profiling tools",
+     "url": "https://learn.microsoft.com/en-us/power-query/data-profiling-tools"
+    },
+    {
+     "text": "Dealing with errors",
+     "url": "https://learn.microsoft.com/en-us/power-query/dealing-with-errors"
+    }
+   ]
+  },
+  {
+   "day": 9,
+   "title": "Text cleaning",
+   "subtopics": "Trim, Clean, case, split by delimiter, extract, replace values, Column from Examples",
+   "learn": "Split by delimiter, Replace values, Column from examples",
+   "practice": "Fix the text issues from Day 8. Split a full name or address column.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 2",
+   "groupTitle": "Power Query essentials (cleaning data)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Split by delimiter",
+     "url": "https://learn.microsoft.com/en-us/power-query/split-columns-delimiter"
+    },
+    {
+     "text": "Replace values",
+     "url": "https://learn.microsoft.com/en-us/power-query/replace-values"
+    },
+    {
+     "text": "Column from examples",
+     "url": "https://learn.microsoft.com/en-us/power-query/column-from-example"
+    }
+   ]
+  },
+  {
+   "day": 10,
+   "title": "Numbers, dates, new columns",
+   "subtopics": "Data types and locale (Indian dd-mm-yyyy dates!); custom column; conditional column",
+   "learn": "Data types, Custom column, Conditional column",
+   "practice": "Add a \"Profit Band\" conditional column. Fix a date column using Using locale.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 2",
+   "groupTitle": "Power Query essentials (cleaning data)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Data types",
+     "url": "https://learn.microsoft.com/en-us/power-query/data-types"
+    },
+    {
+     "text": "Custom column",
+     "url": "https://learn.microsoft.com/en-us/power-query/add-custom-column"
+    },
+    {
+     "text": "Conditional column",
+     "url": "https://learn.microsoft.com/en-us/power-query/add-conditional-column"
+    }
+   ]
+  },
+  {
+   "day": 11,
+   "title": "Reshaping",
+   "subtopics": "Tidy data idea; unpivot, pivot, transpose; promote headers",
+   "learn": "Unpivot, Pivot, Promote headers",
+   "practice": "Download a World Bank indicator (years as columns). Unpivot it to Country · Year · Value.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 2",
+   "groupTitle": "Power Query essentials (cleaning data)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Unpivot",
+     "url": "https://learn.microsoft.com/en-us/power-query/unpivot-column"
+    },
+    {
+     "text": "Pivot",
+     "url": "https://learn.microsoft.com/en-us/power-query/pivot-columns"
+    },
+    {
+     "text": "Promote headers",
+     "url": "https://learn.microsoft.com/en-us/power-query/table-promote-demote-headers"
+    }
+   ]
+  },
+  {
+   "day": 12,
+   "title": "Combining tables",
+   "subtopics": "Merge = join (left, right, inner, full, anti); Append = stack; matching key types",
+   "learn": "Merge overview, Append",
+   "practice": "Download Superstore. Merge Orders with Returns (left outer) to flag returned orders. Use a left anti join to find orders never returned. Append two years of data.",
+   "long": true,
+   "iteration": 1,
+   "group": "Week 2",
+   "groupTitle": "Power Query essentials (cleaning data)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Merge overview",
+     "url": "https://learn.microsoft.com/en-us/power-query/merge-queries-overview"
+    },
+    {
+     "text": "Append",
+     "url": "https://learn.microsoft.com/en-us/power-query/append-queries"
+    }
+   ]
+  },
+  {
+   "day": 13,
+   "title": "Grouping and organising",
+   "subtopics": "Group By (multiple aggregations); Reference vs Duplicate; disable load for helper queries; query folders and naming",
+   "learn": "Group by, Referenced queries",
+   "practice": "Group Superstore by Region and Category. Organise queries into folders: Staging, Dimensions, Facts.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 2",
+   "groupTitle": "Power Query essentials (cleaning data)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Group by",
+     "url": "https://learn.microsoft.com/en-us/power-query/group-by"
+    },
+    {
+     "text": "Referenced queries",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/power-query-referenced-queries"
+    }
+   ]
+  },
+  {
+   "day": 14,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "Rewatch any confusing lesson",
+   "practice": "Take one fresh messy data.gov.in file and clean it fully. Every step renamed meaningfully (pros do this).",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 2",
+   "groupTitle": "Power Query essentials (cleaning data)",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 15,
+   "title": "Why modeling",
+   "subtopics": "Fact vs dimension tables; grain; star schema vs one big flat table",
+   "learn": "Star schema guidance (read twice; it's the most important page in this plan)",
+   "practice": "On paper, sketch Superstore as one fact table and 4 dimensions.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 3",
+   "groupTitle": "Data modeling basics",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Star schema guidance",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
+    }
+   ]
+  },
+  {
+   "day": 16,
+   "title": "Relationships",
+   "subtopics": "One-to- many, one-to-one, many-to- many; cross-filter direction; active vs inactive; Model view",
+   "learn": "Create and manage relationships",
+   "practice": "Turn off Autodetect relationships. Create them yourself and check direction arrows.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 3",
+   "groupTitle": "Data modeling basics",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Create and manage relationships",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-create-and-manage-relationships"
+    }
+   ]
+  },
+  {
+   "day": 17,
+   "title": "Build a star schema from a flat file",
+   "subtopics": "Reference the flat table → keep dimension columns → remove duplicates → relate back",
+   "learn": "Dimensional model tutorial",
+   "practice": "Split Superstore into Sales (fact), Customer, Product, Geography, Date. Hide fact-table keys.",
+   "long": true,
+   "iteration": 1,
+   "group": "Week 3",
+   "groupTitle": "Data modeling basics",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Dimensional model tutorial",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-dimensional-model-report"
+    }
+   ]
+  },
+  {
+   "day": 18,
+   "title": "Date table",
+   "subtopics": "Why you need one; CALENDAR vs CALENDARAUTO vs Power Query; mark as date table; turn off Auto date/time",
+   "learn": "Date table guidance, Mark as date table, Auto date/time",
+   "practice": "Build a DAX date table with Year, Quarter, Month name, Month number, Weekday. Add an Indian Financial Year column (April–March).",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 3",
+   "groupTitle": "Data modeling basics",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Date table guidance",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables"
+    },
+    {
+     "text": "Mark as date table",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-date-tables"
+    },
+    {
+     "text": "Auto date/time",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-auto-date-time"
+    }
+   ]
+  },
+  {
+   "day": 19,
+   "title": "Model properties",
+   "subtopics": "Sort by column (month names!), data categories (city, state), formats, default summarization, hierarchies, display folders, hiding columns",
+   "learn": "Sort by column, Data categorization",
+   "practice": "Sort Month Name by Month Number. Create a Year → Quarter → Month hierarchy. Set State as a geography category and try a map.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 3",
+   "groupTitle": "Data modeling basics",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Sort by column",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-sort-by-column"
+    },
+    {
+     "text": "Data categorization",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-data-categorization"
+    }
+   ]
+  },
+  {
+   "day": 20,
+   "title": "Calculated columns vs measures",
+   "subtopics": "When each is right; memory cost; a dedicated Measures table",
+   "learn": "Calculated columns, SQLBI: columns vs measures",
+   "practice": "Create an empty \"_Measures\" table and move every measure into it.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 3",
+   "groupTitle": "Data modeling basics",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Calculated columns",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-calculated-columns"
+    },
+    {
+     "text": "SQLBI: columns vs measures",
+     "url": "https://www.sqlbi.com/articles/calculated-columns-and-measures-in-dax/"
+    }
+   ]
+  },
+  {
+   "day": 21,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Download Maven Toys from the Data Playground. Model it as a star schema with a date table, from scratch.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 3",
+   "groupTitle": "Data modeling basics",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 22,
+   "title": "DAX syntax",
+   "subtopics": "Operators, data types, BLANK, comments, formatting conventions; aggregators (SUM) vs iterators (SUMX)",
+   "learn": "DAX overview, SQLBI DAX formatting rules",
+   "practice": "Write Sales = SUMX(Sales, Quantity × Price). Paste all your measures into DAX Formatter.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 4",
+   "groupTitle": "DAX core",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "DAX overview",
+     "url": "https://learn.microsoft.com/en-us/dax/dax-overview"
+    },
+    {
+     "text": "SQLBI DAX formatting rules",
+     "url": "https://www.sqlbi.com/articles/rules-for-dax-code-formatting/"
+    }
+   ]
+  },
+  {
+   "day": 23,
+   "title": "Evaluation context (the big idea)",
+   "subtopics": "Row context vs filter context; why the same measure gives different numbers in each cell",
+   "learn": "SQLBI: row vs filter context",
+   "practice": "In a matrix, explain out loud why each cell shows what it shows. Write it in your notes.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 4",
+   "groupTitle": "DAX core",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "SQLBI: row vs filter context",
+     "url": "https://www.sqlbi.com/articles/row-context-and-filter-context-in-dax/"
+    }
+   ]
+  },
+  {
+   "day": 24,
+   "title": "CALCULATE",
+   "subtopics": "Adding filters, replacing filters, boolean filters; why it's the most important DAX function",
+   "learn": "SQLBI: Introducing CALCULATE, dax.guide/calculate",
+   "practice": "Write: Sales West, Sales Technology, Sales West + Technology, Sales for discounted orders.",
+   "long": true,
+   "iteration": 1,
+   "group": "Week 4",
+   "groupTitle": "DAX core",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "SQLBI: Introducing CALCULATE",
+     "url": "https://www.sqlbi.com/articles/introducing-calculate-in-dax/"
+    },
+    {
+     "text": "dax.guide/calculate",
+     "url": "https://dax.guide/calculate/"
+    }
+   ]
+  },
+  {
+   "day": 25,
+   "title": "Removing filters",
+   "subtopics": "ALL, ALLEXCEPT, REMOVEFILTERS; % of total; % of category",
+   "learn": "dax.guide/all, dax.guide/removefilters",
+   "practice": "Write % of Grand Total and % of Category. Check both in a matrix by Category → Sub- category.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 4",
+   "groupTitle": "DAX core",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "dax.guide/all",
+     "url": "https://dax.guide/all/"
+    },
+    {
+     "text": "dax.guide/removefilters",
+     "url": "https://dax.guide/removefilters/"
+    }
+   ]
+  },
+  {
+   "day": 26,
+   "title": "Logic and variables",
+   "subtopics": "IF, SWITCH(TRUE()), ISBLANK, COALESCE; VAR … RETURN for readable code",
+   "learn": "SQLBI: Variables in DAX, dax.guide/switch",
+   "practice": "Rewrite Profit Margin % using VAR. Write a \"Performance Flag\" measure (Above target / On track / Below).",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 4",
+   "groupTitle": "DAX core",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "SQLBI: Variables in DAX",
+     "url": "https://www.sqlbi.com/articles/variables-in-dax/"
+    },
+    {
+     "text": "dax.guide/switch",
+     "url": "https://dax.guide/switch/"
+    }
+   ]
+  },
+  {
+   "day": 27,
+   "title": "Basic time intelligence",
+   "subtopics": "TOTALYTD, SAMEPERIODLASTYEAR, DATEADD; YoY and YoY %",
+   "learn": "DAX Patterns: time calculations, dax.guide/totalytd",
+   "practice": "Write Sales YTD, Sales LY, YoY, YoY %. Also Sales FYTD for the Indian April– March year.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 4",
+   "groupTitle": "DAX core",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "DAX Patterns: time calculations",
+     "url": "https://www.daxpatterns.com/standard-time-related-calculations/"
+    },
+    {
+     "text": "dax.guide/totalytd",
+     "url": "https://dax.guide/totalytd/"
+    }
+   ]
+  },
+  {
+   "day": 28,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Build a KPI page: Sales, Profit, Margin %, YoY %, YTD, % of total, each in its own card or matrix.",
+   "long": false,
+   "iteration": 1,
+   "group": "Week 4",
+   "groupTitle": "DAX core",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 29,
+   "title": "Report design basics",
+   "subtopics": "Layout grid, visual hierarchy (KPIs top-left), choosing visuals, consistent colors, themes, titles that say something",
+   "learn": "Report design tips, Report themes",
+   "practice": "Start Project 1: \"Superstore Sales Overview\", 2 pages (Executive summary, Product deep-dive).",
+   "long": true,
+   "iteration": 1,
+   "group": "Iteration 1 project",
+   "groupTitle": "Project 1: Superstore Sales Overview",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Report design tips",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-tips-and-tricks-for-creating-reports"
+    },
+    {
+     "text": "Report themes",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-report-themes"
+    }
+   ]
+  },
+  {
+   "day": 30,
+   "title": "Finish and self-review",
+   "subtopics": "",
+   "learn": "Use the Exit check above",
+   "practice": "Finish Project 1. Save to 04_Portfolio/ . Take 3 screenshots. Write a 5-line summary of insights you found.",
+   "long": true,
+   "iteration": 1,
+   "group": "Iteration 1 project",
+   "groupTitle": "Project 1: Superstore Sales Overview",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 31,
+   "title": "Combine files from a folder",
+   "subtopics": "Folder connector, sample file, helper queries, why this is used for monthly reports",
+   "learn": "Combine files overview, Folder connector",
+   "practice": "Split Superstore into 12 monthly CSVs (in Excel). Load them all with one Folder query. Add a 13th file and refresh: it should just appear.",
+   "long": true,
+   "iteration": 2,
+   "group": "Week 5",
+   "groupTitle": "Power Query in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Combine files overview",
+     "url": "https://learn.microsoft.com/en-us/power-query/combine-files-overview"
+    },
+    {
+     "text": "Folder connector",
+     "url": "https://learn.microsoft.com/en-us/power-query/connectors/folder"
+    }
+   ]
+  },
+  {
+   "day": 32,
+   "title": "Parameters and data source settings",
+   "subtopics": "Dynamic file paths; credentials; privacy levels and why they cause errors",
+   "learn": "Query parameters, Privacy levels",
+   "practice": "Replace the hard-coded folder path with a parameter. Change the parameter and refresh.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 5",
+   "groupTitle": "Power Query in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Query parameters",
+     "url": "https://learn.microsoft.com/en-us/power-query/power-query-query-parameters"
+    },
+    {
+     "text": "Privacy levels",
+     "url": "https://learn.microsoft.com/en-us/power-bi/enterprise/desktop-privacy-levels"
+    }
+   ]
+  },
+  {
+   "day": 33,
+   "title": "M language basics",
+   "subtopics": "Advanced Editor; let … in; steps as variables; values, lists, records, tables",
+   "learn": "Quick tour of M",
+   "practice": "Open the Advanced Editor on Day 31's query. Rename every step and add a comment explaining each.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 5",
+   "groupTitle": "Power Query in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Quick tour of M",
+     "url": "https://learn.microsoft.com/en-us/powerquery-m/quick-tour-of-the-power-query-m-formula-language"
+    }
+   ]
+  },
+  {
+   "day": 34,
+   "title": "Custom functions and error handling",
+   "subtopics": "Turn a query into a function; try … otherwise; Keep/Remove errors; fixing import errors",
+   "learn": "Custom functions, Error handling",
+   "practice": "Write a function that cleans a phone or PIN code column. Use try … otherwise to replace bad dates with null.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 5",
+   "groupTitle": "Power Query in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Custom functions",
+     "url": "https://learn.microsoft.com/en-us/power-query/custom-function"
+    },
+    {
+     "text": "Error handling",
+     "url": "https://learn.microsoft.com/en-us/power-query/error-handling"
+    }
+   ]
+  },
+  {
+   "day": 35,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Download Contoso 10K CSV. Load all tables, clean types, organise into query folders, and document each query's purpose in its description.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 5",
+   "groupTitle": "Power Query in depth",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 36,
+   "title": "Semi-structured data",
+   "subtopics": "JSON, XML, web tables; expanding records and lists into a table",
+   "learn": "JSON connector, Parse JSON/XML, Web page tutorial",
+   "practice": "Import a Wikipedia table (e.g. Indian states by GDP). Expand a nested JSON sample into a flat table.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 6",
+   "groupTitle": "Semi-structured data, storage modes, modeling in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "JSON connector",
+     "url": "https://learn.microsoft.com/en-us/power-query/connectors/json"
+    },
+    {
+     "text": "Parse JSON/XML",
+     "url": "https://learn.microsoft.com/en-us/power-query/parse-json-xml"
+    },
+    {
+     "text": "Web page tutorial",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-tutorial-importing-and-analyzing-from-a-web-page"
+    }
+   ]
+  },
+  {
+   "day": 37,
+   "title": "Query folding",
+   "subtopics": "What it is; which steps fold; folding indicators; View Native Query; why it matters for big data",
+   "learn": "Query folding basics, Folding indicators",
+   "practice": "Read only (files don't fold). If you've installed SQL Server for your SQL course, connect to it and watch the indicators.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 6",
+   "groupTitle": "Semi-structured data, storage modes, modeling in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Query folding basics",
+     "url": "https://learn.microsoft.com/en-us/power-query/query-folding-basics"
+    },
+    {
+     "text": "Folding indicators",
+     "url": "https://learn.microsoft.com/en-us/power-query/step-folding-indicators"
+    }
+   ]
+  },
+  {
+   "day": 38,
+   "title": "Storage modes",
+   "subtopics": "Import vs DirectQuery vs Dual vs Direct Lake; composite models; when each is chosen at work",
+   "learn": "Storage mode, DirectQuery, Direct Lake",
+   "practice": "Write a comparison table in your notes: speed, freshness, size limit, DAX limitations. This is a top interview question.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 6",
+   "groupTitle": "Semi-structured data, storage modes, modeling in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Storage mode",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-storage-mode"
+    },
+    {
+     "text": "DirectQuery",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-directquery-about"
+    },
+    {
+     "text": "Direct Lake",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/direct-lake-overview"
+    }
+   ]
+  },
+  {
+   "day": 39,
+   "title": "Role-playing dimensions",
+   "subtopics": "Order Date vs Delivery Date; active vs inactive relationships; USERELATIONSHIP",
+   "learn": "Active vs inactive relationships, dax.guide/userelationship",
+   "practice": "In Contoso, relate Date to both Order Date and Delivery Date. Write Sales by Delivery Date.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 6",
+   "groupTitle": "Semi-structured data, storage modes, modeling in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Active vs inactive relationships",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-active-inactive"
+    },
+    {
+     "text": "dax.guide/userelationship",
+     "url": "https://dax.guide/userelationship/"
+    }
+   ]
+  },
+  {
+   "day": 40,
+   "title": "Many-to-many and bidirectional filters",
+   "subtopics": "Bridge tables; why bidirectional is risky (ambiguity, performance)",
+   "learn": "Many-to-many guidance, Bidirectional guidance",
+   "practice": "Model a budget table at Month × Category grain against daily sales.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 6",
+   "groupTitle": "Semi-structured data, storage modes, modeling in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Many-to-many guidance",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-many-to-many"
+    },
+    {
+     "text": "Bidirectional guidance",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-bidirectional-filtering"
+    }
+   ]
+  },
+  {
+   "day": 41,
+   "title": "Keys and granularity",
+   "subtopics": "Surrogate keys (Index column); snowflake vs star (when to flatten); choosing the grain",
+   "learn": "Star schema guidance (reread sections on surrogate keys and snowflake)",
+   "practice": "Flatten Product → Subcategory → Category into one Product dimension.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 6",
+   "groupTitle": "Semi-structured data, storage modes, modeling in depth",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Star schema guidance",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
+    }
+   ]
+  },
+  {
+   "day": 42,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Finish the full Contoso star schema: role-playing dates, hidden keys, sorted columns, hierarchies, measures table.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 6",
+   "groupTitle": "Semi-structured data, storage modes, modeling in depth",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 43,
+   "title": "Iterators",
+   "subtopics": "SUMX, AVERAGEX, MINX/MAXX, COUNTX; RANKX and ties; Top N",
+   "learn": "dax.guide/sumx, dax.guide/rankx, SQLBI: RANKX in measures",
+   "practice": "Write Average Order Value, Product Rank by Sales, Top 5 Products.",
+   "long": true,
+   "iteration": 2,
+   "group": "Week 7",
+   "groupTitle": "Intermediate DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "dax.guide/sumx",
+     "url": "https://dax.guide/sumx/"
+    },
+    {
+     "text": "dax.guide/rankx",
+     "url": "https://dax.guide/rankx/"
+    },
+    {
+     "text": "SQLBI: RANKX in measures",
+     "url": "https://www.sqlbi.com/articles/use-of-rankx-in-power-bi-measures/"
+    }
+   ]
+  },
+  {
+   "day": 44,
+   "title": "Context transition",
+   "subtopics": "What happens when CALCULATE meets row context; RELATED, RELATEDTABLE",
+   "learn": "SQLBI: context transition, dax.guide/related",
+   "practice": "Calculated column on Customer: Lifetime Sales. Then explain why it needs CALCULATE.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 7",
+   "groupTitle": "Intermediate DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "SQLBI: context transition",
+     "url": "https://www.sqlbi.com/articles/understanding-context-transition/"
+    },
+    {
+     "text": "dax.guide/related",
+     "url": "https://dax.guide/related/"
+    }
+   ]
+  },
+  {
+   "day": 45,
+   "title": "Table functions",
+   "subtopics": "VALUES, DISTINCT, FILTER, ADDCOLUMNS, SUMMARIZECOLUMNS, TOPN, SELECTCOLUMNS",
+   "learn": "dax.guide/summarizecolumns, dax.guide/topn",
+   "practice": "Open DAX query view and run EVALUATE on each function to see the table it returns.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 7",
+   "groupTitle": "Intermediate DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "dax.guide/summarizecolumns",
+     "url": "https://dax.guide/summarizecolumns/"
+    },
+    {
+     "text": "dax.guide/topn",
+     "url": "https://dax.guide/topn/"
+    }
+   ]
+  },
+  {
+   "day": 46,
+   "title": "Time intelligence in depth",
+   "subtopics": "MTD/QTD; rolling 3 and 12 months (DATESINPERIOD); moving averages; Indian fiscal year (April–March)",
+   "learn": "Time intelligence functions, dax.guide/datesinperiod",
+   "practice": "Write Sales MTD, Rolling 12M Sales, 3-Month Moving Average, Sales FYTD with year end \"3/31\".",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 7",
+   "groupTitle": "Intermediate DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Time intelligence functions",
+     "url": "https://learn.microsoft.com/en-us/dax/time-intelligence-functions-dax"
+    },
+    {
+     "text": "dax.guide/datesinperiod",
+     "url": "https://dax.guide/datesinperiod/"
+    }
+   ]
+  },
+  {
+   "day": 47,
+   "title": "Semi-additive measures",
+   "subtopics": "Stock and balances: can't be summed over time; closing balance, LASTNONBLANK",
+   "learn": "SQLBI: semi-additive measures",
+   "practice": "With Maven Toys inventory: Closing Stock, Average Stock, Stock Days Cover. Very relevant to retail roles.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 7",
+   "groupTitle": "Intermediate DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "SQLBI: semi-additive measures",
+     "url": "https://www.sqlbi.com/articles/semi-additive-measures-in-dax/"
+    }
+   ]
+  },
+  {
+   "day": 48,
+   "title": "Totals and selections",
+   "subtopics": "SELECTEDVALUE, HASONEVALUE, ISINSCOPE; fixing wrong totals; dynamic titles; basic statistics (MEDIAN, STDEV)",
+   "learn": "dax.guide/selectedvalue, dax.guide/isinscope, Expression- based titles, Statistical functions",
+   "practice": "Build a title that reads \"Sales for <selected region>\". Fix a matrix total that sums when it should average.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 7",
+   "groupTitle": "Intermediate DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "dax.guide/selectedvalue",
+     "url": "https://dax.guide/selectedvalue/"
+    },
+    {
+     "text": "dax.guide/isinscope",
+     "url": "https://dax.guide/isinscope/"
+    },
+    {
+     "text": "Expression- based titles",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-conditional-format-visual-titles"
+    },
+    {
+     "text": "Statistical functions",
+     "url": "https://learn.microsoft.com/en-us/dax/statistical-functions-dax"
+    }
+   ]
+  },
+  {
+   "day": 49,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "DAX drill: write 20 measures from memory (list in your notes). Check each against a manual Excel pivot.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 7",
+   "groupTitle": "Intermediate DAX",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 50,
+   "title": "Choosing the right visual",
+   "subtopics": "Comparison, trend, part-to- whole, distribution, relationship; what to avoid (3D, too many pies)",
+   "learn": "FT Visual Vocabulary, Visual types",
+   "practice": "Critique your Iteration 1 report: list every visual you'd change and why.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 8",
+   "groupTitle": "Visualization and storytelling",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "FT Visual Vocabulary",
+     "url": "https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary"
+    },
+    {
+     "text": "Visual types",
+     "url": "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-types-for-reports-and-q-and-a"
+    }
+   ]
+  },
+  {
+   "day": 51,
+   "title": "Conditional formatting and analytics",
+   "subtopics": "Background/font colors, data bars, icons, field- value rules; reference lines, constant lines, trend lines",
+   "learn": "Conditional formatting, Analytics pane",
+   "practice": "Red/green YoY % in a matrix. Add a target line to a column chart.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 8",
+   "groupTitle": "Visualization and storytelling",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Conditional formatting",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-conditional-table-formatting"
+    },
+    {
+     "text": "Analytics pane",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-analytics-pane"
+    }
+   ]
+  },
+  {
+   "day": 52,
+   "title": "Drill down and drillthrough",
+   "subtopics": "Hierarchy drilling; drillthrough pages, Back button, keep all filters",
+   "learn": "Drillthrough",
+   "practice": "Build a Customer Detail page you can drill through to from any customer name.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 8",
+   "groupTitle": "Visualization and storytelling",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Drillthrough",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-drillthrough"
+    }
+   ]
+  },
+  {
+   "day": 53,
+   "title": "Interactivity",
+   "subtopics": "Report page tooltips; bookmarks; Selection pane (group, layer, hide); buttons and actions",
+   "learn": "Tooltips, Bookmarks, Buttons",
+   "practice": "Make a tooltip page with a mini trend. Use bookmarks to toggle chart ↔ table view.",
+   "long": true,
+   "iteration": 2,
+   "group": "Week 8",
+   "groupTitle": "Visualization and storytelling",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Tooltips",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-tooltips"
+    },
+    {
+     "text": "Bookmarks",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-bookmarks"
+    },
+    {
+     "text": "Buttons",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-buttons"
+    }
+   ]
+  },
+  {
+   "day": 54,
+   "title": "Slicers and dynamic visuals",
+   "subtopics": "Sync slicers across pages; field parameters (user picks the measure/dimension); page navigator",
+   "learn": "Slicers and sync, Field parameters, Navigators",
+   "practice": "Add a field parameter so users switch between Sales, Profit and Units in one chart.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 8",
+   "groupTitle": "Visualization and storytelling",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Slicers and sync",
+     "url": "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-slicers"
+    },
+    {
+     "text": "Field parameters",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-field-parameters"
+    },
+    {
+     "text": "Navigators",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/button-navigators"
+    }
+   ]
+  },
+  {
+   "day": 55,
+   "title": "Polish, mobile, accessibility",
+   "subtopics": "Theme JSON; wireframing; mobile layout; alt text, tab order, color contrast",
+   "learn": "Mobile layout, Accessibility, Theme generator",
+   "practice": "Create a custom theme JSON. Build a mobile layout for your summary page.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 8",
+   "groupTitle": "Visualization and storytelling",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Mobile layout",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-create-mobile-optimized-report-about"
+    },
+    {
+     "text": "Accessibility",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-accessibility-overview"
+    },
+    {
+     "text": "Theme generator",
+     "url": "https://themes.powerbi.tips/"
+    }
+   ]
+  },
+  {
+   "day": 56,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Redesign Project 1 from scratch with everything from this week. Compare before/after screenshots.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 8",
+   "groupTitle": "Visualization and storytelling",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 57,
+   "title": "Service basics",
+   "subtopics": "Publish; My workspace; semantic model vs report vs dashboard; licenses (Free, Pro, PPU, Fabric capacity) at a high level",
+   "learn": "Service overview, Publish from Desktop",
+   "practice": "Publish your Contoso report. Explore the semantic model settings page.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 9",
+   "groupTitle": "Power BI Service (sharing, refresh, security)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Service overview",
+     "url": "https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-service-overview"
+    },
+    {
+     "text": "Publish from Desktop",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-upload-desktop-files"
+    }
+   ]
+  },
+  {
+   "day": 58,
+   "title": "Workspaces, roles, sharing",
+   "subtopics": "Admin/Member/Contributor/Viewer; share vs app vs Teams; item-level access",
+   "learn": "Workspaces, Workspace roles, Apps",
+   "practice": "Create a workspace and an app with two reports.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 9",
+   "groupTitle": "Power BI Service (sharing, refresh, security)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Workspaces",
+     "url": "https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-new-workspaces"
+    },
+    {
+     "text": "Workspace roles",
+     "url": "https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-roles-new-workspaces"
+    },
+    {
+     "text": "Apps",
+     "url": "https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-create-distribute-apps"
+    }
+   ]
+  },
+  {
+   "day": 59,
+   "title": "Dashboards, alerts, subscriptions",
+   "subtopics": "Pinning tiles; dashboard vs report (interview favourite); data alerts; email subscriptions",
+   "learn": "Dashboards, Data alerts, Subscriptions",
+   "practice": "Pin 4 tiles to a dashboard; set an alert on a KPI card.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 9",
+   "groupTitle": "Power BI Service (sharing, refresh, security)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Dashboards",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/service-dashboards"
+    },
+    {
+     "text": "Data alerts",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/service-set-data-alerts"
+    },
+    {
+     "text": "Subscriptions",
+     "url": "https://learn.microsoft.com/en-us/power-bi/collaborate-share/end-user-subscribe"
+    }
+   ]
+  },
+  {
+   "day": 60,
+   "title": "Refresh and gateways",
+   "subtopics": "Scheduled refresh; when a gateway is needed; personal vs standard gateway; cloud sources",
+   "learn": "Scheduled refresh, What is a gateway",
+   "practice": "Move your data to OneDrive for Business or SharePoint so it refreshes without a gateway. Schedule a daily refresh.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 9",
+   "groupTitle": "Power BI Service (sharing, refresh, security)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Scheduled refresh",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/refresh-scheduled-refresh"
+    },
+    {
+     "text": "What is a gateway",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-onprem"
+    }
+   ]
+  },
+  {
+   "day": 61,
+   "title": "Row-level security",
+   "subtopics": "Static roles; dynamic RLS with USERPRINCIPALNAME and a security table; testing with View as",
+   "learn": "RLS, RLS guidance",
+   "practice": "Create a role per region, then a dynamic version driven by a user– region mapping table.",
+   "long": true,
+   "iteration": 2,
+   "group": "Week 9",
+   "groupTitle": "Power BI Service (sharing, refresh, security)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "RLS",
+     "url": "https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security"
+    },
+    {
+     "text": "RLS guidance",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/rls-guidance"
+    }
+   ]
+  },
+  {
+   "day": 62,
+   "title": "Governance",
+   "subtopics": "Promote vs certify; sensitivity labels; lineage view; export settings",
+   "learn": "Endorsement, Sensitivity labels, Lineage view",
+   "practice": "Open lineage view for your workspace and explain each item in your notes.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 9",
+   "groupTitle": "Power BI Service (sharing, refresh, security)",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Endorsement",
+     "url": "https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-endorse-content"
+    },
+    {
+     "text": "Sensitivity labels",
+     "url": "https://learn.microsoft.com/en-us/power-bi/enterprise/service-security-sensitivity-label-overview"
+    },
+    {
+     "text": "Lineage view",
+     "url": "https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-data-lineage"
+    }
+   ]
+  },
+  {
+   "day": 63,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "End-to-end: publish Contoso, set refresh, add RLS, package as an app.",
+   "long": false,
+   "iteration": 2,
+   "group": "Week 9",
+   "groupTitle": "Power BI Service (sharing, refresh, security)",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 64,
+   "title": "Project 2: \"Retail Sales & Inventory Performance\" (Maven Toys)",
+   "subtopics": "",
+   "learn": "",
+   "practice": "Requirements (5 business questions), model, measures including stock cover and rolling sales.",
+   "long": true,
+   "iteration": 2,
+   "group": "Iteration 2 project",
+   "groupTitle": "Project 2: Retail Sales & Inventory Performance",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 65,
+   "title": "Finish and publish",
+   "subtopics": "",
+   "learn": "",
+   "practice": "3 pages + drillthrough + tooltip page. Publish, screenshot, write insights. Run the exit check.",
+   "long": true,
+   "iteration": 2,
+   "group": "Iteration 2 project",
+   "groupTitle": "Project 2: Retail Sales & Inventory Performance",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 66,
+   "title": "Filter propagation in depth",
+   "subtopics": "Expanded tables; filter overwrite vs intersection; KEEPFILTERS",
+   "learn": "SQLBI: expanded tables, SQLBI: KEEPFILTERS",
+   "practice": "Write the same measure with and without KEEPFILTERS; explain the difference in a matrix.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 10",
+   "groupTitle": "Advanced DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "SQLBI: expanded tables",
+     "url": "https://www.sqlbi.com/articles/expanded-tables-in-dax/"
+    },
+    {
+     "text": "SQLBI: KEEPFILTERS",
+     "url": "https://www.sqlbi.com/articles/using-keepfilters-in-dax/"
+    }
+   ]
+  },
+  {
+   "day": 67,
+   "title": "Advanced filter functions",
+   "subtopics": "ALLSELECTED (% of visible total); CROSSFILTER; TREATAS for virtual relationships",
+   "learn": "dax.guide/allselected, SQLBI: TREATAS, dax.guide/crossfilter",
+   "practice": "% of selected total; connect the budget table with TREATAS instead of a relationship.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 10",
+   "groupTitle": "Advanced DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "dax.guide/allselected",
+     "url": "https://dax.guide/allselected/"
+    },
+    {
+     "text": "SQLBI: TREATAS",
+     "url": "https://www.sqlbi.com/articles/propagate-filters-using-treatas-in-dax/"
+    },
+    {
+     "text": "dax.guide/crossfilter",
+     "url": "https://dax.guide/crossfilter/"
+    }
+   ]
+  },
+  {
+   "day": 68,
+   "title": "Calculation groups",
+   "subtopics": "Why they replace dozens of measures; time- intelligence calc group; format strings; dynamic format strings",
+   "learn": "Calculation groups, Dynamic format strings",
+   "practice": "Build a calc group with Current, PY, YoY, YoY %, YTD. Apply it to Sales, Profit and Units.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 10",
+   "groupTitle": "Advanced DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Calculation groups",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/calculation-groups"
+    },
+    {
+     "text": "Dynamic format strings",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-dynamic-format-strings"
+    }
+   ]
+  },
+  {
+   "day": 69,
+   "title": "Visual calculations, window functions, DAX query view",
+   "subtopics": "OFFSET, INDEX, WINDOW; EVALUATE / DEFINE queries",
+   "learn": "Visual calculations, DAX query view, dax.guide/offset",
+   "practice": "Running total and month-over-month change using a visual calculation; then the same with OFFSET in a measure.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 10",
+   "groupTitle": "Advanced DAX",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Visual calculations",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-visual-calculations-overview"
+    },
+    {
+     "text": "DAX query view",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/dax-query-view"
+    },
+    {
+     "text": "dax.guide/offset",
+     "url": "https://dax.guide/offset/"
+    }
+   ]
+  },
+  {
+   "day": 70,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Rewrite your 10 most complex measures more cleanly (VARs, comments, formatting).",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 10",
+   "groupTitle": "Advanced DAX",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 71,
+   "title": "ABC / Pareto analysis and Top N with \"Others\"",
+   "subtopics": "Which 20% of products make 80% of sales",
+   "learn": "DAX Patterns: ABC classification, dax.guide/topn",
+   "practice": "ABC class per product; a Pareto chart (cumulative %).",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 11",
+   "groupTitle": "DAX patterns used at work",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "DAX Patterns: ABC classification",
+     "url": "https://www.daxpatterns.com/abc-classification/"
+    },
+    {
+     "text": "dax.guide/topn",
+     "url": "https://dax.guide/topn/"
+    }
+   ]
+  },
+  {
+   "day": 72,
+   "title": "Customer analytics",
+   "subtopics": "New vs returning customers; repeat rate; simple cohort retention",
+   "learn": "DAX Patterns: new and returning customers",
+   "practice": "New Customers, Returning Customers, Repeat Rate %. (Think: Lenskart repeat eyewear buyers.)",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 11",
+   "groupTitle": "DAX patterns used at work",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "DAX Patterns: new and returning customers",
+     "url": "https://www.daxpatterns.com/new-and-returning-customers/"
+    }
+   ]
+  },
+  {
+   "day": 73,
+   "title": "Budget vs actual",
+   "subtopics": "Different granularity; allocating monthly targets to days; variance and achievement %",
+   "learn": "DAX Patterns: budget patterns",
+   "practice": "Monthly store targets vs daily sales; achievement % with conditional formatting.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 11",
+   "groupTitle": "DAX patterns used at work",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "DAX Patterns: budget patterns",
+     "url": "https://www.daxpatterns.com/budget-patterns/"
+    }
+   ]
+  },
+  {
+   "day": 74,
+   "title": "What-if and segmentation",
+   "subtopics": "What-if parameters (\"What if price rises 5%?\"); dynamic segmentation by customer spend",
+   "learn": "What-if parameters, DAX Patterns: dynamic segmentation",
+   "practice": "Discount scenario slider; customer segments (Low/Mid/High value) that update with filters.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 11",
+   "groupTitle": "DAX patterns used at work",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "What-if parameters",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-what-if"
+    },
+    {
+     "text": "DAX Patterns: dynamic segmentation",
+     "url": "https://www.daxpatterns.com/dynamic-segmentation/"
+    }
+   ]
+  },
+  {
+   "day": 75,
+   "title": "Indian formatting and disconnected tables",
+   "subtopics": "Lakhs/crores display; unit switcher (₹, ₹ L, ₹ Cr) with a disconnected table and dynamic format strings",
+   "learn": "Dynamic format strings",
+   "practice": "Slicer that switches all KPIs between ₹, Lakhs and Crores. Indian employers notice this.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 11",
+   "groupTitle": "DAX patterns used at work",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Dynamic format strings",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-dynamic-format-strings"
+    }
+   ]
+  },
+  {
+   "day": 76,
+   "title": "Debugging DAX",
+   "subtopics": "DAX Studio basics; Server Timings; common mistakes (wrong context, bidirectional surprises, BLANK handling)",
+   "learn": "DAX Studio docs, DAX query view",
+   "practice": "Install DAX Studio; connect to your model; capture a slow measure and time it.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 11",
+   "groupTitle": "DAX patterns used at work",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "DAX Studio docs",
+     "url": "https://daxstudio.org/docs/"
+    },
+    {
+     "text": "DAX query view",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/dax-query-view"
+    }
+   ]
+  },
+  {
+   "day": 77,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Answer 10 business questions from Contoso using only measures (write the questions first, as a manager would).",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 11",
+   "groupTitle": "DAX patterns used at work",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 78,
+   "title": "Performance Analyzer",
+   "subtopics": "DAX query vs visual display vs other; spotting slow visuals",
+   "learn": "Performance Analyzer, Optimization guide",
+   "practice": "Record a page refresh; find the slowest visual and fix it.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 12",
+   "groupTitle": "Performance and professional workflow",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Performance Analyzer",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-performance-analyzer"
+    },
+    {
+     "text": "Optimization guide",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/power-bi-optimization"
+    }
+   ]
+  },
+  {
+   "day": 79,
+   "title": "VertiPaq and model size",
+   "subtopics": "Columnar storage, cardinality, compression; remove unused columns, reduce precision, split date- time",
+   "learn": "Data reduction techniques, Bravo",
+   "practice": "Load Contoso 1M rows. Use VertiPaq Analyzer (DAX Studio) to record size, then reduce it. Log before/after.",
+   "long": true,
+   "iteration": 3,
+   "group": "Week 12",
+   "groupTitle": "Performance and professional workflow",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Data reduction techniques",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/import-modeling-data-reduction"
+    },
+    {
+     "text": "Bravo",
+     "url": "https://bravo.bi/"
+    }
+   ]
+  },
+  {
+   "day": 80,
+   "title": "Large-data features",
+   "subtopics": "Incremental refresh; aggregations; DirectQuery performance tips",
+   "learn": "Incremental refresh, Aggregations",
+   "practice": "Configure incremental refresh policy (RangeStart/RangeEnd) on the Sales table.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 12",
+   "groupTitle": "Performance and professional workflow",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Incremental refresh",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/incremental-refresh-overview"
+    },
+    {
+     "text": "Aggregations",
+     "url": "https://learn.microsoft.com/en-us/power-bi/transform-model/aggregations-advanced"
+    }
+   ]
+  },
+  {
+   "day": 81,
+   "title": "Best Practice Analyzer",
+   "subtopics": "Tabular Editor 2; Microsoft's BPA rules; model descriptions and documentation",
+   "learn": "BPA rules (Microsoft), Tabular Editor 2",
+   "practice": "Run BPA on your model; fix every high-severity warning.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 12",
+   "groupTitle": "Performance and professional workflow",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "BPA rules (Microsoft)",
+     "url": "https://github.com/microsoft/Analysis-Services/tree/master/BestPracticeRules"
+    },
+    {
+     "text": "Tabular Editor 2",
+     "url": "https://github.com/TabularEditor/TabularEditor/releases"
+    }
+   ]
+  },
+  {
+   "day": 82,
+   "title": "Version control",
+   "subtopics": "PBIP format, TMDL, why .pbix is hard to version; Git basics: commit, push, branch",
+   "learn": "Power BI projects (PBIP), TMDL overview, GitHub Skills",
+   "practice": "Save your Contoso project as PBIP, create a GitHub repo, commit, change a measure, commit again and view the diff.",
+   "long": true,
+   "iteration": 3,
+   "group": "Week 12",
+   "groupTitle": "Performance and professional workflow",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Power BI projects (PBIP)",
+     "url": "https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview"
+    },
+    {
+     "text": "TMDL overview",
+     "url": "https://learn.microsoft.com/en-us/analysis-services/tmdl/tmdl-overview"
+    },
+    {
+     "text": "GitHub Skills",
+     "url": "https://skills.github.com/"
+    }
+   ]
+  },
+  {
+   "day": 83,
+   "title": "Deployment and paginated reports",
+   "subtopics": "Dev/Test/Prod with deployment pipelines; Fabric Git integration; when to use a paginated report",
+   "learn": "Deployment pipelines, Git integration, Paginated or Power BI report?",
+   "practice": "Read and summarise. If you have a Fabric trial, create a 2- stage pipeline.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 12",
+   "groupTitle": "Performance and professional workflow",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Deployment pipelines",
+     "url": "https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines"
+    },
+    {
+     "text": "Git integration",
+     "url": "https://learn.microsoft.com/en-us/fabric/cicd/git-integration/intro-to-git-integration"
+    },
+    {
+     "text": "Paginated or Power BI report?",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/report-paginated-or-power-bi"
+    }
+   ]
+  },
+  {
+   "day": 84,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Write a one-page \"Performance tuning log\" for your Contoso model. This becomes a portfolio piece.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 12",
+   "groupTitle": "Performance and professional workflow",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 85,
+   "title": "Microsoft Fabric for analysts",
+   "subtopics": "OneLake, Lakehouse, Warehouse, Direct Lake: what you need to know, not build",
+   "learn": "Fabric overview, OneLake",
+   "practice": "Draw the Fabric architecture from memory in your notes.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 13",
+   "groupTitle": "Fabric, Copilot, AI visuals and real-world practice",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Fabric overview",
+     "url": "https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview"
+    },
+    {
+     "text": "OneLake",
+     "url": "https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview"
+    }
+   ]
+  },
+  {
+   "day": 86,
+   "title": "Shared models and reuse",
+   "subtopics": "Live connection to a shared semantic model; Dataflows Gen2; Analyze in Excel",
+   "learn": "Connect to semantic models, Dataflows Gen2, Analyze in Excel",
+   "practice": "Build a thin report on top of your published model.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 13",
+   "groupTitle": "Fabric, Copilot, AI visuals and real-world practice",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Connect to semantic models",
+     "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-report-lifecycle-datasets"
+    },
+    {
+     "text": "Dataflows Gen2",
+     "url": "https://learn.microsoft.com/en-us/fabric/data-factory/dataflows-gen2-overview"
+    },
+    {
+     "text": "Analyze in Excel",
+     "url": "https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-analyze-in-excel"
+    }
+   ]
+  },
+  {
+   "day": 87,
+   "title": "Copilot in Power BI",
+   "subtopics": "Narrative visuals, creating report pages, summarising a model; preparing a model for Copilot (descriptions, synonyms)",
+   "learn": "Copilot overview, Prepare data for Copilot",
+   "practice": "Add descriptions to all measures and key columns (good practice even without Copilot access).",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 13",
+   "groupTitle": "Fabric, Copilot, AI visuals and real-world practice",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Copilot overview",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-introduction"
+    },
+    {
+     "text": "Prepare data for Copilot",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-evaluate-data"
+    }
+   ]
+  },
+  {
+   "day": 88,
+   "title": "Requirements and KPI design",
+   "subtopics": "Stakeholder questions; KPI definitions; wireframes before building; translating \"I want a dashboard\" into specs",
+   "learn": "Implementation planning",
+   "practice": "Write a requirements doc for a store-manager dashboard using your own sales floor experience: 5 questions, KPIs, filters, users.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 13",
+   "groupTitle": "Fabric, Copilot, AI visuals and real-world practice",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Implementation planning",
+     "url": "https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-introduction"
+    }
+   ]
+  },
+  {
+   "day": 89,
+   "title": "Testing and data quality",
+   "subtopics": "Reconcile totals to source; edge cases (returns, blanks, future dates); documentation and handover notes",
+   "learn": "Data profiling tools",
+   "practice": "Build a hidden \"QA\" page that checks row counts and totals against source.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 13",
+   "groupTitle": "Fabric, Copilot, AI visuals and real-world practice",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Data profiling tools",
+     "url": "https://learn.microsoft.com/en-us/power-query/data-profiling-tools"
+    }
+   ]
+  },
+  {
+   "day": 90,
+   "title": "Patterns and AI visuals",
+   "subtopics": "Analyze (explain increase/decrease); grouping, binning, clustering; key influencers; decomposition tree; anomaly detection; forecasting",
+   "learn": "Key influencers, Decomposition tree, Anomaly detection, Grouping and binning",
+   "practice": "Add a \"Why did sales change?\" page using these visuals.",
+   "long": true,
+   "iteration": 3,
+   "group": "Week 13",
+   "groupTitle": "Fabric, Copilot, AI visuals and real-world practice",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "Key influencers",
+     "url": "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-influencers"
+    },
+    {
+     "text": "Decomposition tree",
+     "url": "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-decomposition-tree"
+    },
+    {
+     "text": "Anomaly detection",
+     "url": "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-anomaly-detection"
+    },
+    {
+     "text": "Grouping and binning",
+     "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-grouping-and-binning"
+    }
+   ]
+  },
+  {
+   "day": 91,
+   "title": "Review & Build",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Revisit your weakest week (check your notes for repeated confusion).",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 13",
+   "groupTitle": "Fabric, Copilot, AI visuals and real-world practice",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 92,
+   "title": "Exam orientation",
+   "subtopics": "Skills measured (4 domains); question types; case studies",
+   "learn": "PL-300 study guide, Exam sandbox",
+   "practice": "Take the free official practice assessment (link). Note every wrong answer by domain.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": [
+    {
+     "text": "PL-300 study guide",
+     "url": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-300"
+    },
+    {
+     "text": "Exam sandbox",
+     "url": "https://aka.ms/examdemo"
+    }
+   ]
+  },
+  {
+   "day": 93,
+   "title": "Revise: Prepare the data (25–30%)",
+   "subtopics": "",
+   "learn": "Study guide bullets",
+   "practice": "Redo any Power Query topic you missed.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 94,
+   "title": "Revise: Model the data (25– 30%)",
+   "subtopics": "",
+   "learn": "Study guide bullets",
+   "practice": "Redo modeling/DAX topics you missed.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 95,
+   "title": "Revise: Visualize & analyze (25–30%) and Manage & secure (15–20%)",
+   "subtopics": "",
+   "learn": "Study guide bullets",
+   "practice": "Retake the practice assessment. Aim for 80%+.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 96,
+   "title": "Capstone, part 1",
+   "subtopics": "Requirements, model, core measures",
+   "learn": "Your Day 88 requirements doc",
+   "practice": "Project 3: \"Omnichannel Retail Performance\" on Contoso (see Portfolio projects).",
+   "long": true,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 97,
+   "title": "Capstone, part 2",
+   "subtopics": "Pages, interactivity, RLS, performance check",
+   "learn": "–",
+   "practice": "Finish all pages; run Performance Analyzer and BPA.",
+   "long": true,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 98,
+   "title": "Review & Build: publish and document",
+   "subtopics": "",
+   "learn": "–",
+   "practice": "Publish; write README; record a 3–5 minute walkthrough video.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": true,
+   "learnLinks": []
+  },
+  {
+   "day": 99,
+   "title": "Portfolio",
+   "subtopics": "",
+   "learn": "See Portfolio section",
+   "practice": "GitHub repos for all 3 projects (PBIP + screenshots + README). LinkedIn post with your capstone.",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": []
+  },
+  {
+   "day": 100,
+   "title": "Mock interview and next steps",
+   "subtopics": "",
+   "learn": "Interview questions section",
+   "practice": "Answer all interview questions out loud (or with me). Book your PL-300 exam (fee shown in INR on the exam page).",
+   "long": false,
+   "iteration": 3,
+   "group": "Week 14",
+   "groupTitle": "PL-300 prep and capstone",
+   "review": false,
+   "learnLinks": []
+  }
+ ]
+}
