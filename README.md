@@ -143,6 +143,23 @@ fly deploy
 
 Deploy from the `Dockerfile`, add a volume mounted at `/data`, and you're done.
 
+### As a claude.ai artifact (no server)
+
+```bash
+cd client && npm run build:artifact
+```
+
+This writes `client/dist-artifact/study-tracker.html`, a single page that runs inside claude.ai:
+- Sign-in comes from claude.ai, so there is no email or password.
+- Data is stored in the artifact's own database, with one record per person plus their monthly activity log.
+- The artifact's owner and its Editors get the Admin panel.
+- People need Contributor access to save progress.
+
+Publish the page with these capabilities:
+- `db`, with rules `progress` and `log` set to read `admin`, write `owner`, and `progress/{self}` and `log/{self}` set to read `view`, write `interact`
+- `user`, with scope `profile`
+- `downloads`, used for the CSV export
+
 ### Environment variables
 
 | Variable | Default | Purpose |

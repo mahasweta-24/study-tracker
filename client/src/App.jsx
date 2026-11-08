@@ -1,3 +1,4 @@
+import { Logo } from './components/Logo.jsx';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { api } from './api.js';
 import { AppCtx } from './store.js';
@@ -104,7 +105,7 @@ export default function App() {
       <div className="shell">
         <header className="topbar">
           <a className="brand" href="#home">
-            <img src="/favicon.svg" alt="" width="28" height="28" />
+            <Logo />
             <span>Study Tracker</span>
           </a>
           <nav className="nav">

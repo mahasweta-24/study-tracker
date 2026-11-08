@@ -1,3 +1,4 @@
+import { Logo } from '../components/Logo.jsx';
 import { useState } from 'react';
 import { api } from '../api.js';
 import { Icon } from '../components/ui.jsx';
@@ -27,7 +28,7 @@ export default function Login({ onAuthed, isDark, toggleTheme }) {
     <div className="auth">
       <button className="icon-btn auth-theme" onClick={toggleTheme} aria-label="Toggle dark mode"><Icon name={isDark ? 'sun' : 'moon'} /></button>
       <section className="auth-hero">
-        <div className="brand big"><img src="/favicon.svg" alt="" width="40" height="40" /><span>Study Tracker</span></div>
+        <div className="brand big"><Logo size={40} /><span>Study Tracker</span></div>
         <h1>Two roadmaps. One place to stay on track.</h1>
         <ul className="auth-points">
           <li><span className="dot pbi" /> <div><strong>Power BI · 100 days</strong><p>A calendar that schedules every day from your start date, and shifts the plan when life happens.</p></div></li>
