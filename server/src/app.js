@@ -12,10 +12,10 @@ import { activityRoutes, adminRoutes } from './routes/activity.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export function createApp(db, { staticDir } = {}) {
+export async function createApp(db, { staticDir } = {}) {
   const app = express();
-  const auth = createAuth(db, getJwtSecret(db));
-  auth.bootstrapAdmin();
+  const auth = createAuth(db, await getJwtSecret(db));
+  await auth.bootstrapAdmin();
 
   app.set('trust proxy', 1);
   app.disable('x-powered-by');
@@ -34,16 +34,19 @@ export function createApp(db, { staticDir } = {}) {
   app.use(auth.authenticate);
 
   const api = express.Router();
-  api.get('/health', (_req, res) => res.json({ ok: true }));
+  api.get('/health', async (_req, res) => {
+    await db.get('SELECT 1 AS ok');
+    res.json({ ok: true, db: db.kind });
+  });
 
   const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 30 });
-  api.post('/auth/register', limiter, (req, res) => {
-    const user = auth.register(req.body || {});
+  api.post('/auth/register', limiter, async (req, res) => {
+    const user = await auth.register(req.body || {});
     auth.issue(res, req, user);
     res.status(201).json({ user: publicUser(user) });
   });
-  api.post('/auth/login', limiter, (req, res) => {
-    const user = auth.login(req.body || {});
+  api.post('/auth/login', limiter, async (req, res) => {
+    const user = await auth.login(req.body || {});
     auth.issue(res, req, user);
     res.json({ user: publicUser(user) });
   });

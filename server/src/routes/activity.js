@@ -4,71 +4,72 @@ import { publicUser } from '../auth.js';
 
 const SORTABLE = new Set(['created_at', 'section', 'action', 'user']);
 
-function queryActivity(db, q, { forUserId } = {}) {
+async function queryActivity(db, q, { forUserId } = {}) {
   const where = [];
-  const params = {};
-  if (forUserId) {
-    where.push('a.user_id = @uid');
-    params.uid = forUserId;
-  } else if (q.userId) {
-    where.push('a.user_id = @uid');
-    params.uid = Number(q.userId);
+  const params = [];
+  const uid = forUserId || (q.userId ? Number(q.userId) : null);
+  if (uid) {
+    where.push('a.user_id = ?');
+    params.push(uid);
   }
   if (q.section) {
-    where.push('a.section = @section');
-    params.section = String(q.section);
+    where.push('a.section = ?');
+    params.push(String(q.section));
   }
   if (q.action) {
-    where.push('a.action = @action');
-    params.action = String(q.action);
+    where.push('a.action = ?');
+    params.push(String(q.action));
   }
   if (q.from) {
-    where.push('a.created_at >= @from');
-    params.from = String(q.from);
+    where.push('a.created_at >= ?');
+    params.push(String(q.from));
   }
   if (q.to) {
-    where.push('a.created_at < @to');
-    params.to = String(q.to);
+    where.push('a.created_at < ?');
+    params.push(String(q.to));
   }
   if (q.q) {
-    where.push("(a.message LIKE @q ESCAPE '\\' OR a.item LIKE @q ESCAPE '\\' OR u.name LIKE @q ESCAPE '\\' OR u.email LIKE @q ESCAPE '\\')");
-    params.q = `%${String(q.q).replace(/[\\%_]/g, (m) => '\\' + m)}%`;
+    const like = `%${String(q.q).toLowerCase().replace(/[\\%_]/g, (m) => '\\' + m)}%`;
+    where.push(
+      "(LOWER(a.message) LIKE ? ESCAPE '\\' OR LOWER(COALESCE(a.item, '')) LIKE ? ESCAPE '\\' OR LOWER(u.name) LIKE ? ESCAPE '\\' OR LOWER(u.email) LIKE ? ESCAPE '\\')"
+    );
+    params.push(like, like, like, like);
   }
   const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
   const sort = SORTABLE.has(q.sort) ? q.sort : 'created_at';
   const sortSql = sort === 'user' ? 'u.name' : `a.${sort}`;
   const dir = q.dir === 'asc' ? 'ASC' : 'DESC';
   const base = `FROM activity_log a JOIN users u ON u.id = a.user_id ${whereSql}`;
-  const total = db.prepare(`SELECT COUNT(*) AS n ${base}`).get(params).n;
+  const total = (await db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS n ${base}`, params)).n;
   return {
     total,
-    rows: (limit, offset) =>
-      db
-        .prepare(
+    rows: async (limit, offset) =>
+      (
+        await db.all(
           `SELECT a.id, a.user_id, u.name AS user_name, u.email AS user_email, a.section, a.action, a.item, a.details, a.message, a.created_at
-           ${base} ORDER BY ${sortSql} ${dir}, a.id ${dir} LIMIT @limit OFFSET @offset`
+           ${base} ORDER BY ${sortSql} ${dir}, a.id ${dir} LIMIT ? OFFSET ?`,
+          [...params, limit, offset]
         )
-        .all({ ...params, limit, offset })
-        .map((r) => ({
-          id: r.id,
-          userId: r.user_id,
-          userName: r.user_name,
-          userEmail: r.user_email,
-          section: r.section,
-          action: r.action,
-          item: r.item,
-          details: r.details ? JSON.parse(r.details) : null,
-          message: r.message,
-          createdAt: r.created_at,
-        })),
+      ).map((r) => ({
+        id: r.id,
+        userId: r.user_id,
+        userName: r.user_name,
+        userEmail: r.user_email,
+        section: r.section,
+        action: r.action,
+        item: r.item,
+        details: r.details ? JSON.parse(r.details) : null,
+        message: r.message,
+        createdAt: r.created_at,
+      })),
   };
 }
 
-function paged(db, req, opts) {
+async function paged(db, req, opts) {
   const page = Math.max(1, Number(req.query.page) || 1);
   const pageSize = Math.min(200, Math.max(5, Number(req.query.pageSize) || 25));
-  const { total, rows } = queryActivity(db, req.query, opts);
-  return { total, page, pageSize, rows: rows(pageSize, (page - 1) * pageSize) };
+  const { total, rows } = await queryActivity(db, req.query, opts);
+  return { total, page, pageSize, rows: await rows(pageSize, (page - 1) * pageSize) };
 }
 
 const csvCell = (v) => {
@@ -80,18 +81,18 @@ const csvCell = (v) => {
 
 export function activityRoutes(db) {
   const r = Router();
-  r.get('/', (req, res) => res.json(paged(db, req, { forUserId: req.user.id })));
+  r.get('/', async (req, res) => res.json(await paged(db, req, { forUserId: req.user.id })));
   return r;
 }
 
 export function adminRoutes(db) {
   const r = Router();
 
-  r.get('/activity', (req, res) => res.json(paged(db, req)));
+  r.get('/activity', async (req, res) => res.json(await paged(db, req)));
 
-  r.get('/activity.csv', (req, res) => {
-    const { rows, total } = queryActivity(db, req.query);
-    const all = rows(Math.max(total, 1), 0);
+  r.get('/activity.csv', async (req, res) => {
+    const { rows, total } = await queryActivity(db, req.query);
+    const all = await rows(Math.max(total, 1), 0);
     const header = ['id', 'timestamp', 'user', 'email', 'section', 'action', 'item', 'details', 'message'];
     const lines = [header.join(',')].concat(
       all.map((a) =>
@@ -103,30 +104,32 @@ export function adminRoutes(db) {
     res.send('﻿' + lines.join('\r\n'));
   });
 
-  r.get('/stats', (_req, res) => {
-    const one = (sql) => db.prepare(sql).get().n;
+  r.get('/stats', async (_req, res) => {
+    const one = async (sql, p = []) => (await db.get(sql, p)).n;
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
     res.json({
-      users: one('SELECT COUNT(*) AS n FROM users'),
-      events: one('SELECT COUNT(*) AS n FROM activity_log'),
-      eventsToday: one("SELECT COUNT(*) AS n FROM activity_log WHERE created_at >= strftime('%Y-%m-%dT00:00:00Z','now')"),
-      completions: one("SELECT COUNT(*) AS n FROM activity_log WHERE action = 'complete'"),
-      shifts: one("SELECT COUNT(*) AS n FROM activity_log WHERE action IN ('shift_day','shift_days','catch_up','shift_week','shift_weeks','move_case')"),
+      users: await one('SELECT CAST(COUNT(*) AS INTEGER) AS n FROM users'),
+      events: await one('SELECT CAST(COUNT(*) AS INTEGER) AS n FROM activity_log'),
+      eventsToday: await one('SELECT CAST(COUNT(*) AS INTEGER) AS n FROM activity_log WHERE created_at >= ?', [today.toISOString()]),
+      completions: await one("SELECT CAST(COUNT(*) AS INTEGER) AS n FROM activity_log WHERE action = 'complete'"),
+      shifts: await one(
+        "SELECT CAST(COUNT(*) AS INTEGER) AS n FROM activity_log WHERE action IN ('shift_day','shift_days','catch_up','shift_week','shift_weeks','move_case')"
+      ),
     });
   });
 
-  r.get('/users', (_req, res) => {
-    const users = db
-      .prepare(
-        `SELECT u.*,
-          (SELECT start_date FROM plans p WHERE p.user_id = u.id AND p.section = 'powerbi') AS pbi_start,
-          (SELECT start_date FROM plans p WHERE p.user_id = u.id AND p.section = 'cases') AS cases_start,
-          (SELECT COUNT(*) FROM pbi_progress x WHERE x.user_id = u.id AND x.completed_at IS NOT NULL) AS pbi_done,
-          (SELECT COUNT(*) FROM case_progress x WHERE x.user_id = u.id AND x.completed_at IS NOT NULL) AS cases_done,
-          (SELECT COUNT(*) FROM activity_log a WHERE a.user_id = u.id) AS events,
-          (SELECT MAX(created_at) FROM activity_log a WHERE a.user_id = u.id) AS last_activity
-         FROM users u ORDER BY u.created_at`
-      )
-      .all();
+  r.get('/users', async (_req, res) => {
+    const users = await db.all(
+      `SELECT u.*,
+        (SELECT start_date FROM plans p WHERE p.user_id = u.id AND p.section = 'powerbi') AS pbi_start,
+        (SELECT start_date FROM plans p WHERE p.user_id = u.id AND p.section = 'cases') AS cases_start,
+        (SELECT CAST(COUNT(*) AS INTEGER) FROM pbi_progress x WHERE x.user_id = u.id AND x.completed_at IS NOT NULL) AS pbi_done,
+        (SELECT CAST(COUNT(*) AS INTEGER) FROM case_progress x WHERE x.user_id = u.id AND x.completed_at IS NOT NULL) AS cases_done,
+        (SELECT CAST(COUNT(*) AS INTEGER) FROM activity_log a WHERE a.user_id = u.id) AS events,
+        (SELECT MAX(created_at) FROM activity_log a WHERE a.user_id = u.id) AS last_activity
+       FROM users u ORDER BY u.created_at`
+    );
     res.json(
       users.map((u) => ({
         ...publicUser(u),
@@ -140,18 +143,18 @@ export function adminRoutes(db) {
     );
   });
 
-  r.patch('/users/:id', (req, res) => {
+  r.patch('/users/:id', async (req, res) => {
     const id = requireInt(req.params.id, 'id', 1, Number.MAX_SAFE_INTEGER);
     const role = req.body.role;
     if (role !== 'admin' && role !== 'user') throw badRequest('role must be "admin" or "user".');
-    const user = db.prepare('SELECT * FROM users WHERE id = ?').get(id);
+    const user = await db.get('SELECT * FROM users WHERE id = ?', [id]);
     if (!user) throw notFound('User not found.');
     if (role === 'user' && user.role === 'admin') {
-      const admins = db.prepare("SELECT COUNT(*) AS n FROM users WHERE role = 'admin'").get().n;
+      const admins = (await db.get("SELECT CAST(COUNT(*) AS INTEGER) AS n FROM users WHERE role = 'admin'")).n;
       if (admins <= 1) throw badRequest('There must be at least one admin.');
     }
-    db.prepare('UPDATE users SET role = ? WHERE id = ?').run(role, id);
-    res.json(publicUser(db.prepare('SELECT * FROM users WHERE id = ?').get(id)));
+    await db.run('UPDATE users SET role = ? WHERE id = ?', [role, id]);
+    res.json(publicUser(await db.get('SELECT * FROM users WHERE id = ?', [id])));
   });
 
   return r;

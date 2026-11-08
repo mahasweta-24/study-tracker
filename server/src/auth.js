@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { nowISO } from './db.js';
 import { HttpError, badRequest } from './lib/errors.js';
 
 const COOKIE = 'st_token';
@@ -28,15 +29,17 @@ export function createAuth(db, secret) {
     return req.cookies?.[COOKIE];
   }
 
-  function authenticate(req, _res, next) {
+  async function authenticate(req, _res, next) {
     const token = readToken(req);
+    req.user = null;
     if (token) {
+      let sub = null;
       try {
-        const { sub } = jwt.verify(token, secret);
-        req.user = db.prepare('SELECT * FROM users WHERE id = ?').get(sub) || null;
+        sub = jwt.verify(token, secret).sub;
       } catch {
-        req.user = null;
+        sub = null;
       }
+      if (sub) req.user = (await db.get('SELECT * FROM users WHERE id = ?', [sub])) || null;
     }
     next();
   }
@@ -52,25 +55,28 @@ export function createAuth(db, secret) {
     next();
   }
 
-  function register({ name, email, password }) {
+  async function register({ name, email, password }) {
     name = typeof name === 'string' ? name.trim() : '';
     email = typeof email === 'string' ? email.trim().toLowerCase() : '';
     if (!name || name.length > 80) throw badRequest('Please enter your name.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw badRequest('Please enter a valid email.');
     if (typeof password !== 'string' || password.length < 8) throw badRequest('Password must be at least 8 characters.');
-    if (db.prepare('SELECT 1 FROM users WHERE email = ?').get(email)) throw new HttpError(409, 'An account with this email already exists.');
-    const noAdminYet = !db.prepare("SELECT 1 FROM users WHERE role = 'admin'").get();
-    const role = noAdminYet || (adminEmail && email === adminEmail) ? 'admin' : 'user';
+    if (await db.get('SELECT 1 AS x FROM users WHERE email = ?', [email])) throw new HttpError(409, 'An account with this email already exists.');
     const hash = bcrypt.hashSync(password, 10);
-    const { lastInsertRowid } = db
-      .prepare('INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, ?)')
-      .run(name, email, hash, role);
-    return db.prepare('SELECT * FROM users WHERE id = ?').get(lastInsertRowid);
+    return db.tx(async (q) => {
+      const noAdminYet = !(await q.get("SELECT 1 AS x FROM users WHERE role = 'admin'"));
+      const role = noAdminYet || (adminEmail && email === adminEmail) ? 'admin' : 'user';
+      const { rows } = await q.run(
+        'INSERT INTO users (name, email, password_hash, role, created_at) VALUES (?, ?, ?, ?, ?) RETURNING id',
+        [name, email, hash, role, nowISO()]
+      );
+      return q.get('SELECT * FROM users WHERE id = ?', [rows[0].id]);
+    });
   }
 
-  function login({ email, password }) {
+  async function login({ email, password }) {
     email = typeof email === 'string' ? email.trim().toLowerCase() : '';
-    const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+    const user = await db.get('SELECT * FROM users WHERE email = ?', [email]);
     if (!user || typeof password !== 'string' || !bcrypt.compareSync(password, user.password_hash)) {
       throw new HttpError(401, 'Incorrect email or password.');
     }
@@ -78,18 +84,19 @@ export function createAuth(db, secret) {
   }
 
   // Optional: create/promote an admin from environment variables on boot.
-  function bootstrapAdmin() {
+  async function bootstrapAdmin() {
     const pw = process.env.ADMIN_PASSWORD;
     if (!adminEmail) return;
-    const existing = db.prepare('SELECT * FROM users WHERE email = ?').get(adminEmail);
+    const existing = await db.get('SELECT * FROM users WHERE email = ?', [adminEmail]);
     if (existing) {
-      if (existing.role !== 'admin') db.prepare("UPDATE users SET role = 'admin' WHERE id = ?").run(existing.id);
+      if (existing.role !== 'admin') await db.run("UPDATE users SET role = 'admin' WHERE id = ?", [existing.id]);
     } else if (pw && pw.length >= 8) {
-      db.prepare("INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, 'admin')").run(
+      await db.run("INSERT INTO users (name, email, password_hash, role, created_at) VALUES (?, ?, ?, 'admin', ?)", [
         process.env.ADMIN_NAME || 'Admin',
         adminEmail,
-        bcrypt.hashSync(pw, 10)
-      );
+        bcrypt.hashSync(pw, 10),
+        nowISO(),
+      ]);
     }
   }
 

@@ -1,19 +1,37 @@
-import { test, before, after } from 'node:test';
+import { describe, test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { openDb } from '../src/db.js';
 import { createApp } from '../src/app.js';
 
+// Runs against SQLite always, and against Postgres when TEST_DATABASE_URL is set
+// (its tables are dropped first, so point it at a throwaway database).
+const engines = [['sqlite', () => openDb({ url: '', file: ':memory:' })]];
+if (process.env.TEST_DATABASE_URL) {
+  engines.push([
+    'postgres',
+    async () => {
+      const { default: pg } = await import('pg');
+      const c = new pg.Client({ connectionString: process.env.TEST_DATABASE_URL });
+      await c.connect();
+      await c.query('DROP TABLE IF EXISTS activity_log, case_progress, pbi_progress, plans, settings, users CASCADE');
+      await c.end();
+      return openDb({ url: process.env.TEST_DATABASE_URL });
+    },
+  ]);
+}
+
+for (const [engine, makeDb] of engines) describe(`API on ${engine}`, () => {
 let server, base, db;
 
 before(async () => {
-  db = openDb(':memory:');
-  const app = createApp(db, { staticDir: '/nonexistent' });
+  db = await makeDb();
+  const app = await createApp(db, { staticDir: '/nonexistent' });
   await new Promise((r) => (server = app.listen(0, r)));
   base = `http://127.0.0.1:${server.address().port}/api`;
 });
-after(() => {
+after(async () => {
   server.close();
-  db.close();
+  await db.close();
 });
 
 function client() {
@@ -145,4 +163,5 @@ test('admin sees every change in the activity log, with filters and CSV', async 
 test('cannot remove the last admin', async () => {
   const r = await admin('PATCH', '/admin/users/1', { role: 'user' });
   assert.equal(r.status, 400);
+});
 });

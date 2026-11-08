@@ -1,19 +1,22 @@
-# One-click deploy on Render: New + > Blueprint > pick this repo.
-# The persistent disk keeps the SQLite database across deploys (disks need a paid instance type).
+# Free deploy on Render: New + > Blueprint > pick this repo.
+# Data lives in a free Neon Postgres database: paste its connection string
+# into DATABASE_URL when Render asks (Render's free tier has no persistent disk).
 services:
   - type: web
     name: study-tracker
-    runtime: docker
-    plan: starter
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
     healthCheckPath: /api/health
     envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false
+      - key: REQUIRE_DATABASE_URL
+        value: "true"
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL
         sync: false
-      - key: ADMIN_PASSWORD
-        sync: false
-    disk:
-      name: study-data
-      mountPath: /data
-      sizeGB: 1

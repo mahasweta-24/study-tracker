@@ -56,7 +56,7 @@ Ideas borrowed from popular planner and productivity tools:
 
 ## Tech
 
-- **Backend:** Node.js 20+ and Express 5, with SQLite through `better-sqlite3`. The database is a single file, so there is no separate database server to run.
+- **Backend:** Node.js 20+ and Express 5. It stores data in **Postgres** when `DATABASE_URL` is set (for example a free Neon database), and otherwise in **SQLite**, a single file with no database server to run.
 - **Frontend:** React 19 with Vite. The server serves the built app, so the whole thing is **one process on one port**.
 - The roadmap content (days, cases, links) is in `server/src/data/*.json` and was extracted from the two PDFs.
 
@@ -102,10 +102,14 @@ npm run dev:client
 
 Then open http://localhost:5173. Vite proxies `/api` to port 3000.
 
-Run the tests:
+Run the tests (SQLite always; add a throwaway Postgres to test that too):
 
 ```bash
 npm test
+```
+
+```bash
+TEST_DATABASE_URL=postgres://user:pass@localhost:5432/st_test npm test
 ```
 
 ## Deploy
@@ -121,9 +125,21 @@ docker compose up -d --build
 
 The data lives in the `study-data` volume, and the app is at http://your-server:3000. Put it behind a reverse proxy such as Caddy or Nginx for HTTPS.
 
-### Render
+### Render (free) + Neon Postgres (free)
 
-Push to GitHub, then on Render go to **New + → Blueprint** and select the repo. `render.yaml` sets up the Docker service, a 1 GB disk at `/data` and a generated `JWT_SECRET`.
+Render's free tier has no persistent disk, so the data lives in a free [Neon](https://neon.tech) Postgres database.
+
+1. **Create the database.** Sign up at neon.tech, create a project (any name; pick the region closest to you), and copy the **connection string** from the dashboard. It looks like `postgresql://user:password@ep-xxxx.region.aws.neon.tech/neondb?sslmode=require`.
+2. **Create the app.** Sign up at render.com with GitHub, then go to **New + → Blueprint**, choose this repository and branch, and click **Apply**.
+3. When Render asks for **DATABASE_URL**, paste the Neon connection string. **ADMIN_EMAIL** is optional (leave it blank, and the first account to register becomes the admin).
+4. Wait for the deploy to go green, then open the `https://study-tracker-xxxx.onrender.com` URL and register.
+
+Free-tier notes:
+- The app sleeps after about 15 minutes without visits, so the first page load after that takes around 30 to 60 seconds.
+- Neon's free tier keeps your data; its database also pauses when idle and wakes up on the next request.
+- If `DATABASE_URL` is missing, the app refuses to start on Render instead of silently storing data on a disk that gets wiped.
+
+To use a paid Render disk with SQLite instead, switch the service to Docker with a disk mounted at `/data`, and remove `REQUIRE_DATABASE_URL`.
 
 ### Fly.io
 
@@ -165,7 +181,9 @@ Publish the page with these capabilities:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `PORT` | `3000` | HTTP port |
-| `DATA_DIR` | `./data` (`/data` in Docker) | Where `study-tracker.db` is stored |
+| `DATABASE_URL` | none | Postgres connection string; when set, Postgres is used instead of SQLite |
+| `REQUIRE_DATABASE_URL` | none | `true` makes the app refuse to start without `DATABASE_URL` (set in `render.yaml`) |
+| `DATA_DIR` | `./data` (`/data` in Docker) | Where `study-tracker.db` is stored when using SQLite |
 | `JWT_SECRET` | auto-generated and stored in the DB | Session signing secret |
 | `ADMIN_EMAIL` | none | This email is always an admin |
 | `ADMIN_PASSWORD` | none | With `ADMIN_EMAIL`, creates that admin account on boot |
