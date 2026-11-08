@@ -98,7 +98,7 @@ export function Modal({ title, onClose, children, footer, wide }) {
 export function ActionDialog({
   title, confirmLabel = 'Confirm', tone = 'primary', initial = {}, controls, preview, validate,
   messageLabel = 'Message', messagePlaceholder = 'Why are you making this change?', defaultMessage = '',
-  onConfirm, onClose,
+  messageFirst = false, onConfirm, onClose,
 }) {
   const [values, setValues] = useState(initial);
   const [message, setMessage] = useState(defaultMessage);
@@ -123,6 +123,18 @@ export function ActionDialog({
     }
   }
 
+  const messageField = (
+    <>
+      <label className="field" htmlFor="action-message">
+        <span>{messageLabel} <em className="req">required</em></span>
+        <textarea id="action-message" ref={ref} rows={3} value={message} maxLength={1000} placeholder={messagePlaceholder}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) submit(e); }} />
+      </label>
+      <p className="hint">This is saved with the change in the activity log. Press Ctrl/⌘ + Enter to confirm.</p>
+    </>
+  );
+
   return (
     <Modal title={title} onClose={busy ? () => {} : onClose}
       footer={
@@ -134,16 +146,11 @@ export function ActionDialog({
         </>
       }>
       <form onSubmit={submit} className="stack">
+        {messageFirst && messageField}
         {controls?.(values, (patch) => setValues((v) => ({ ...v, ...patch })))}
         {preview && <div className="preview">{preview(values)}</div>}
         {invalid && <div className="form-error">{invalid}</div>}
-        <label className="field">
-          <span>{messageLabel} <em className="req">required</em></span>
-          <textarea ref={ref} rows={3} value={message} maxLength={1000} placeholder={messagePlaceholder}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) submit(e); }} />
-        </label>
-        <p className="hint">This message is saved with the change in your activity history. Press Ctrl/⌘ + Enter to confirm.</p>
+        {!messageFirst && messageField}
         {error && <div className="form-error">{error}</div>}
       </form>
     </Modal>

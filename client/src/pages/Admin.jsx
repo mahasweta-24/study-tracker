@@ -63,6 +63,8 @@ export default function Admin() {
         title={makeAdmin ? `Make ${u.name} an admin?` : `Remove admin rights from ${u.name}?`}
         confirmLabel={makeAdmin ? 'Make admin' : 'Remove admin'}
         tone={makeAdmin ? 'violet' : 'danger'}
+        messageFirst
+        messageLabel={makeAdmin ? `Reason for making ${u.name} an admin` : `Reason for removing ${u.name}'s admin rights`}
         messagePlaceholder={makeAdmin ? 'e.g. Helping review the group’s progress.' : 'e.g. No longer running the group.'}
         preview={() => (
           <p>
@@ -87,6 +89,8 @@ export default function Admin() {
         title={`Reset ${u.name}'s password?`}
         confirmLabel="Reset password"
         tone="danger"
+        messageFirst
+        messageLabel={`Reason for resetting ${u.name}'s password`}
         messagePlaceholder="e.g. She forgot her password and asked for a reset."
         preview={() => (
           <p>
