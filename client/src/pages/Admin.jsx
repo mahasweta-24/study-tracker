@@ -4,6 +4,7 @@ import { useApp } from '../store.js';
 import { ActivityTable, ACTION_OPTIONS, Pager } from '../components/ActivityTable.jsx';
 import { Icon, Segmented } from '../components/ui.jsx';
 import { fmt, fmtDateTime, relTime } from '../dates.js';
+import { EMBEDDED } from '../env.js';
 
 const EMPTY = { userId: '', section: '', action: '', q: '', from: '', to: '' };
 
@@ -65,6 +66,7 @@ export default function Admin() {
           <span className="eyebrow">Admin</span>
           <h1>Admin panel</h1>
           <p className="muted">Every change across all users: completions, shifts, moves and start-date changes, with their messages.</p>
+          {EMBEDDED && <p className="muted small">Admins are this page's owner and Editors. Change who has access from the Share menu.</p>}
         </div>
       </div>
 
@@ -109,7 +111,11 @@ export default function Admin() {
             <label className="inline-field">From <input type="date" value={filters.from} onChange={set('from')} /></label>
             <label className="inline-field">To <input type="date" value={filters.to} onChange={set('to')} /></label>
             {active && <button className="btn ghost small" onClick={() => { setFilters(EMPTY); setPage(1); }}>Clear</button>}
-            <a className="btn small" href={`/api/admin/activity.csv?${qs(query())}`}><Icon name="download" size={16} /> Export CSV</a>
+            {EMBEDDED ? (
+              <button className="btn small" onClick={() => api.exportCsv(query()).catch((e) => notify(e.message, 'error'))}><Icon name="download" size={16} /> Export CSV</button>
+            ) : (
+              <a className="btn small" href={`/api/admin/activity.csv?${qs(query())}`}><Icon name="download" size={16} /> Export CSV</a>
+            )}
           </div>
           {data ? (
             <>
@@ -138,7 +144,7 @@ export default function Admin() {
                 {users.map((u) => (
                   <tr key={u.id}>
                     <td><div className="nowrap"><strong>{u.name}</strong></div><div className="muted tiny">{u.email}</div></td>
-                    <td><span className={`badge ${u.role === 'admin' ? 'violet' : 'gray'}`}>{u.role}</span></td>
+                    <td>{u.role ? <span className={`badge ${u.role === 'admin' ? 'violet' : 'gray'}`}>{u.role}</span> : <span className="muted small">—</span>}</td>
                     <td className="nowrap small">{fmtDateTime(u.createdAt)}</td>
                     <td className="small">
                       <div className="mini-prog"><div className="bar"><div style={{ width: `${u.pbiDone}%`, background: 'var(--pbi)' }} /></div>{u.pbiDone}/100</div>
@@ -153,7 +159,7 @@ export default function Admin() {
                     </td>
                     <td className="nowrap small">{u.lastActivity ? relTime(u.lastActivity) : '—'}</td>
                     <td>
-                      {u.id !== user.id && (
+                      {!EMBEDDED && u.id !== user.id && (
                         <button className="btn tiny" onClick={() => setRole(u, u.role === 'admin' ? 'user' : 'admin')}>
                           {u.role === 'admin' ? 'Remove admin' : 'Make admin'}
                         </button>

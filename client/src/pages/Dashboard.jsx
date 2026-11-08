@@ -32,7 +32,7 @@ export default function Dashboard() {
       <div className="page-head">
         <div>
           <span className="eyebrow">{fmt(today, 'long')}</span>
-          <h1>{greeting()}, {user.name.split(' ')[0]}</h1>
+          <h1>{greeting()}{user.name ? `, ${user.name.split(' ')[0]}` : ''}</h1>
           <p className="muted">{allStreak ? <><Icon name="flame" size={16} className="flame" /> {plural(allStreak, 'day')} streak. Keep it going!</> : 'Finish something today to start a streak.'}</p>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function Dashboard() {
               </div>
             </div>
           ) : pbi.startDate ? <div className="focus done"><strong>All 100 days complete. 🏆</strong></div> : null}
-          <a className="btn block ghost" href="#/powerbi">{pbi.startDate ? 'Open calendar' : 'Set a start date'} <Icon name="arrowRight" size={16} /></a>
+          <a className="btn block ghost" href="#powerbi">{pbi.startDate ? 'Open calendar' : 'Set a start date'} <Icon name="arrowRight" size={16} /></a>
         </section>
 
         <section className="card section-card" style={{ '--c': 'var(--cs)' }}>
@@ -93,12 +93,12 @@ export default function Dashboard() {
               ))}
             </ul>
           )}
-          <a className="btn block ghost" href="#/cases">{cases.startDate ? 'Open weekly board' : 'Set a start date'} <Icon name="arrowRight" size={16} /></a>
+          <a className="btn block ghost" href="#cases">{cases.startDate ? 'Open weekly board' : 'Set a start date'} <Icon name="arrowRight" size={16} /></a>
         </section>
       </div>
 
       <section className="card">
-        <div className="row between"><h3>Recent activity</h3><a href="#/activity" className="small">View all</a></div>
+        <div className="row between"><h3>Recent activity</h3><a href="#activity" className="small">View all</a></div>
         {recent.length ? (
           <ul className="feed">
             {recent.map((a) => (
