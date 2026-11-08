@@ -1,0 +1,15 @@
+services:
+  study-tracker:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-}
+      - JWT_SECRET=${JWT_SECRET:-}
+    volumes:
+      - study-data:/data
+    restart: unless-stopped
+
+volumes:
+  study-data:

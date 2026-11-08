@@ -1,0 +1,29 @@
+# Deploy on Fly.io:
+#   fly launch --no-deploy --copy-config   (pick an app name/region)
+#   fly volumes create study_data --size 1
+#   fly deploy
+app = "study-tracker"
+primary_region = "bom"
+
+[build]
+
+[env]
+  PORT = "3000"
+  DATA_DIR = "/data"
+
+[[mounts]]
+  source = "study_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    method = "GET"
+    path = "/api/health"
+    interval = "30s"
+    timeout = "5s"

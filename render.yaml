@@ -1,0 +1,19 @@
+# One-click deploy on Render: New + > Blueprint > pick this repo.
+# The persistent disk keeps the SQLite database across deploys (disks need a paid instance type).
+services:
+  - type: web
+    name: study-tracker
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+    disk:
+      name: study-data
+      mountPath: /data
+      sizeGB: 1

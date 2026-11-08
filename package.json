@@ -1,0 +1,20 @@
+{
+  "name": "study-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Track progress on the Power BI 100-day roadmap and the Sales & Marketing case study plan.",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "build": "npm run build -w client",
+    "start": "npm start -w server",
+    "test": "npm test -w server"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
